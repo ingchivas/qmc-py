@@ -9,7 +9,7 @@ def _tipoPH(pH, pOH, H, OH):
         return ("base")
 
 def _getConcentracion(H, OH):
-    return (H*OH)
+    return (H*OH),3
 
 def get_pH(pH):
     res = {}
@@ -46,10 +46,11 @@ def get_H(H):
 
 def get_OH(OH):
     res = {}
+    pOH = np.log10(OH) * -1
     res['pH'] = 14 - pOH
     res['pOH'] = np.log10(OH) * -1
     res['H+'] = (1e-14) / OH
-    res['OH'] = OH
+    res['OH-'] = OH
     res['Tipo'] = _tipoPH(res['pH'], res['pOH'],res['H+'] ,res['OH-'])
     res['Concentración'] = _getConcentracion(res['H+'], res['OH-'])
 
