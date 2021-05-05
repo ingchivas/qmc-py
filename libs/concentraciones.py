@@ -73,12 +73,23 @@ def get_vsoluto(v_solucion, p_volumen, u_volumen = 'L'):
     vsoluto = (v_solucion * p_volumen) / 100
     return vsoluto
 
-
-
-
 def get_vsolvente(v_soluto,p_volumen, u_volumen = 'L'):
     v_soluto = _convervol(v_soluto,u_volumen)
 
     vsolvente = ((v_soluto * 100) - (p_volumen * v_soluto)) / p_volumen
-    
+
     return vsolvente
+
+def get_pvolumen(v_solucion, v_soluto, u_volumen = 'L'):
+    v_soluto = _convervol(v_soluto,u_volumen)
+    v_solucion = _convervol(v_solucion,u_volumen)
+
+    porcenvolumen = (v_soluto / v_solucion) * 100
+    return porcenvolumen
+
+def get_pvolumen(v_soluto, v_solvente, u_volumen = 'L'):
+    v_soluto = _convervol(v_soluto,u_volumen)
+    v_solvente = _convervol(v_solvente,u_volumen)
+
+    porcenvolumen = (v_soluto / (v_soluto + v_solvente)) * 100
+    return porcenvolumen
