@@ -274,6 +274,36 @@ def LeyCombV2(t1,t2,v1,p1,p2, unidadesvol = 'L', unidadestemp = 'k', unidadespre
 
     return resultado
 
+def LeyCombT1(t2,v1,v2,p1,p2, unidadesvol = 'L', unidadestemp = 'k', unidadespres = 'atm'):
+    t2 = _convertemp(t2,unidadestemp)
+    v1 = _convervol(v1, unidadesvol)
+    v2 = _convervol(v2, unidadesvol)
+    p1 = _converpres(p1,unidadespres)
+    p2 = _converpres(p2,unidadespres)
+
+    t1 = (p1 * v1 * t2) / (p2 * v2)
+
+    resultado = {}
+    resultado['t1'] = t1
+    resultado['CumpleLey'] = _cumpleComb(t1,t2,v1,v2,p1,p2)
+
+    return resultado
+
+def LeyCombT2(t2,v1,v2,p1,p2, unidadesvol = 'L', unidadestemp = 'k', unidadespres = 'atm'):
+    t1 = _convertemp(t1,unidadestemp)
+    v1 = _convervol(v1, unidadesvol)
+    v2 = _convervol(v2, unidadesvol)
+    p1 = _converpres(p1,unidadespres)
+    p2 = _converpres(p2,unidadespres)
+
+    t2 = (p2 * v2 * t1) / (p1 * v1)
+
+    resultado = {}
+    resultado['t2'] = t2
+    resultado['CumpleLey'] = _cumpleComb(t1,t2,v1,v2,p1,p2)
+
+    return resultado
+
 # print(BoyleP2(28,15,12, unidadespres='atm'))
 # print(LussacP1(18686532121100,1070,108768680))
 
