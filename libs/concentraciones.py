@@ -112,4 +112,5 @@ def pl_gl(m_soluto, v_solucion, u_masa = 'g', u_volumen = 'L'):
     gramolitro = m_soluto/v_solucion
     return gramolitro
 
-def 
+def molaridad_msoluto():
+    pass
