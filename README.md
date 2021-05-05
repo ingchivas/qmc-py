@@ -244,7 +244,7 @@ Regresa:
 |------------------------------|--------------------------------------------------------------------------------------------------------|
 | ```_umaelemento(elemento)``` | Checa la UMA de un elemento en el contenedor.                                                          |
 | ```_cosplit(compuesto)```    | Parser de ecuaciones químicas basado en regex.                                                         |
-| ```_intconv(num)```               | Intenta convertir números a enteros. \nAuxiliar en el algoritmo de reconocimiento de fórmulas químicas |
+| ```_intconv(num)```               | Intenta convertir números a enteros. Auxiliar en el algoritmo de reconocimiento de fórmulas químicas |
 
 ---
 
@@ -253,4 +253,5 @@ Regresa:
 | Métodos                        | Utilidad                                                                               |
 |--------------------------------|----------------------------------------------------------------------------------------|
 | ```Boyle{DATO A OBTENER}({DATOS QUE SE TIENEN} unidadesvol = 'L', unidadespres = 'atm')```  | Obtiene el valor faltante del problema de Boyle. Regresa un float.                           |
-| ```Lussac{DATO A OBTENER}({DATOS QUE SE TIENEN} unidadesvol = 'L', unidadespres = 'atm')``` | OObtiene el valor faltante del problema de Lussac. Regresa un float.             |
+| ```Lussac{DATO A OBTENER}({DATOS QUE SE TIENEN} unidadesvol = 'L', unidadespres = 'atm')``` | Obtiene el valor faltante del problema de Lussac. Regresa un float.             |
+
