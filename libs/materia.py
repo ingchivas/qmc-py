@@ -38,7 +38,7 @@ def _cosplit(compuesto):
         div.append(a)
     return div
 
-def intconv(num):
+def _intconv(num):
     try:
         n = int(num)
         return n
@@ -73,13 +73,13 @@ def umacompuesto(compuesto):
                 break
             
             
-            elif len(div[j]) == 2 and type(intconv(div[j][1])==int):
+            elif len(div[j]) == 2 and type(_intconv(div[j][1])==int):
                 aucompc = _umaelemento(str(div[j][0]))
                 compc = aucompc * int(div[j][1])
                 acumcomp += compc
                 break
 
-            elif len(div[j]) == 2 and (type(intconv(div[j][0]))== int):
+            elif len(div[j]) == 2 and (type(_intconv(div[j][0]))== int):
                 aucompd = _umaelemento(str(div[j][1]))
                 compd = aucompd * int(div[j][0])
 
@@ -109,14 +109,14 @@ def umapercentual(compuesto):
                 break
             
             
-            elif len(div[j]) == 2 and type(intconv(div[j][1])==int):
+            elif len(div[j]) == 2 and type(_intconv(div[j][1])==int):
                 aucompc = _umaelemento(str(div[j][0]))
                 compc = aucompc * int(div[j][1])
                 upercentual[str(div[j][0])] = (compc/utotal)*100
                 
                 break
 
-            elif len(div[j]) == 2 and (type(intconv(div[j][0]))== int):
+            elif len(div[j]) == 2 and (type(_intconv(div[j][0]))== int):
                 aucompd = _umaelemento(str(div[j][1]))
                 compd = aucompd * int(div[j][0])
                 upercentual[str(div[j][1])] = (compd/utotal)*100
