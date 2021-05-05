@@ -41,7 +41,7 @@ El paquete se divide en los siguientes módulos:
 | materia         | Contiene módulos para resolver problemas de UMA, de compuestos y elementos, incluyendo la UMA percentual.        |
 | gases           | Módulos para resolver problemas de Ley de Boyle, Ley de Lussac, Ley de Charles, Ley Combinada de los Gases,      |
 | concentraciones | Módulos para resolver problemas de concentración. [MASA,VOLUMEN,PESO,MOLARIDAD, NORMAL, MOLAL, FRACCIONMOL, PPM] |
-| ph              | Módulos para resolver problemas de pH.                                                                           |
+| pH              | Módulos para resolver problemas de pH.                                                                           |
 
 ---
 
