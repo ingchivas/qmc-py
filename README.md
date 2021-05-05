@@ -1,16 +1,23 @@
-# qmc-py
+# quimpy
 
 ## Miscellaneous chemistry package for Pyhton3
 
 ### Paquete misceláneo de química para Python3
 
-## Descripción:
+## Descripción
 
 Este paquete contiene diferentes módulos orientados a resolver diferentes problemas de química.  
+
+### Dependencias
+math
+re
+numpy
+
 
 ---
 
 ## Estructura del paquete
+
 El paquete se divide en los siguientes módulos:
 
 | Nombre          | Utilidad                                                                                                         |
@@ -23,7 +30,7 @@ El paquete se divide en los siguientes módulos:
 
 ---
 
-### Elementos
+## Elementos
 
 Cada elemento tiene los siguientes atributos:
 
@@ -113,5 +120,113 @@ Además de un método adicional fuera de la clase:
 
 ---
 
-### Materia
+## Materia
 
+Materia tiene los siguientes métodos.
+
+| Métodos                        | Utilidad                                                                               |
+|--------------------------------|----------------------------------------------------------------------------------------|
+| ```umacompuesto(compuesto)```  | Obtiene la UMA de un compuesto o elemento. Regresa un float.                           |
+| ```umapercentual(compuesto)``` | Obtiene la relación porcentual de la UMA de un compuesto. Regresa un dict.             |
+| ```gmol(gramos, compuesto)```  | Obtiene la cantidad de moles de un compuesto a partir de los gramos. Regresa un float. |
+| ```molg(moles,compuesto)```    | Obtiene la cantidad de gramos de un compuesto a partir de la cantidad de moles.        |
+
+### umacompuesto(compuesto)
+
+El compuesto debe estar separado por elementos con espacios para que el parser de REGEX pueda interpretar el compuesto.
+Por ejemplo, para la fórmula química de la glucosa sería ```materia.umacompuesto('C6 H12 O 6')```.
+
+Este método igual puede devolver la UMA de solo un elemento: ```materia.umacompuesto(C)```.
+
+Ejemplo:
+
+```python
+from libs import materia
+
+materia.umacompuesto('H2 O')
+```
+
+Regresa:
+
+```python
+18.015
+```
+
+Para un elemento individual:
+
+```python
+materia.umacompuesto('O')
+```
+
+Regresa:
+
+```python
+15.999
+```
+
+### umapercentual(compuesto)
+
+Este método regresa la composición percentual de la UMA de un elemento o compuesto.
+El parser es el mismo, y se debe escribir de la misma forma que el método ```umacompuesto()```.
+
+```python
+from libs import materia
+
+materia.umapercentual('H2 O')
+```
+
+Regresa:
+
+```python
+{'H': 11.19067443796836, 'O': 88.80932556203163}
+```
+
+Funciona igual para elementos, solo que la relación siempre será 100%.
+
+```python
+materia.umapercentual('O')
+```
+
+Regresa:
+
+```python
+{'O': 100.0}
+```
+
+### gmol(gramos, compuesto)
+
+Convierte gramos de un compuesto a moles. Utiliza el mismo parser y regresa un valor float.
+
+```python
+from libs import materia
+
+materia.gmol(18.01528,'H2 O') 
+```
+
+Regresa:
+
+```python
+1.000015542603386
+```
+
+### molg(gramos, compuesto)
+
+Convierte moles de un compuesto a gramos. Utiliza el mismo parser y regresa un valor float.
+
+```python
+materia.molg(1, 'H2 O')
+```
+
+Regresa:
+
+```python
+18.015
+```
+
+### Métodos encapsulados
+
+| Métodos                      | Utilidad                                                                                               |
+|------------------------------|--------------------------------------------------------------------------------------------------------|
+| ```_umaelemento(elemento)``` | Checa la UMA de un elemento en el contenedor.                                                          |
+| ```_cosplit(compuesto)```    | Parser de ecuaciones químicas basado en regex.                                                         |
+| ```_intconv(num)```               | Intenta convertir números a enteros. \nAuxiliar en el algoritmo de reconocimiento de fórmulas químicas |
