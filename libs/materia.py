@@ -35,6 +35,9 @@ Z = {
 
 # En esta función, se toma un compuesto y se divide en sus elementos
 def _cosplit(compuesto):
+    '''
+    Parser de ecuaciones químicas basado en regex. 
+    '''
     com = compuesto.split(' ') # Separa el compuesto en secciones
     div = [] # Inicia una lista llamada 'div'
     for i in range(len(com)): # Por cada sección
@@ -44,6 +47,9 @@ def _cosplit(compuesto):
 
 # Convierte números enteros para su uso dentro de las funciones químicas
 def _intconv(num): 
+    '''
+    Intenta convertir números a enteros. Auxiliar en el algoritmo de reconocimiento de fórmulas químicas.
+    '''
     try: # Intenta hacer la conversión
         n = int(num)
         return n
@@ -52,6 +58,9 @@ def _intconv(num):
 
 # Obtiene la uma de un elemento determinado
 def _umaelemento(elemento):
+    '''
+    Checa la UMA de un elemento en el contenedor.   
+    '''
     check = elemento
     try: # Intenta utilizar el valor introducido
         if str(check) in uma_dc: # Revisa si el valor existe dentro del diccionario
@@ -64,6 +73,38 @@ def _umaelemento(elemento):
 
 # Obtiene la uma de un compuesto determinado
 def umacompuesto(compuesto):
+    '''
+    El compuesto debe estar separado por elementos con espacios para que el parser de REGEX pueda interpretar el compuesto.
+    Por ejemplo, para la fórmula química de la glucosa sería ```materia.umacompuesto('C6 H12 O 6')```.
+
+    Este método igual puede devolver la UMA de solo un elemento: ```materia.umacompuesto(C)```.
+
+    Ejemplo:
+
+    ```python
+    from libs import materia
+
+    materia.umacompuesto('H2 O')
+    ```
+
+    Regresa:
+
+    ```python
+    18.015
+    ```
+
+    Para un elemento individual:
+
+    ```python
+    materia.umacompuesto('O')
+    ```
+
+    Regresa:
+
+    ```python
+    15.999
+    ```
+    '''
     div = _cosplit(compuesto) # Se apoya de la función _cosplit() para separar el compuesto en elementos
     acumcomp = 0
     # En la siguiente cadena de ifs se va a catalogar el tipo de compuesto y se harán los cálculos acorde
@@ -96,6 +137,34 @@ def umacompuesto(compuesto):
 
 # Obtiene la uma percentual
 def umapercentual(compuesto):
+    '''
+    Este método regresa la composición percentual de la UMA de un elemento o compuesto.
+    El parser es el mismo, y se debe escribir de la misma forma que el método ```umacompuesto()```.
+
+    ```python
+    from libs import materia
+
+    materia.umapercentual('H2 O')
+    ```
+
+    Regresa:
+
+    ```python
+    {'H': 11.19067443796836, 'O': 88.80932556203163}
+    ```
+
+    Funciona igual para elementos, solo que la relación siempre será 100%.
+
+    ```python
+    materia.umapercentual('O')
+    ```
+
+    Regresa:
+
+    ```python
+    {'O': 100.0}
+    ```
+    '''
     utotal = umacompuesto(compuesto) # Se apoya de la función umacompuesto() para obtener la uma
     div = _cosplit(compuesto) # Se apoya de la función _cosplit() para obtener el compuesto dividido
     
@@ -132,8 +201,36 @@ def umapercentual(compuesto):
 
 # Obtiene los gramos / mol del compuesto utilizando la función de umacompuesto()
 def gmol(gramos, compuesto):
+    '''
+    Convierte gramos de un compuesto a moles. Utiliza el mismo parser y regresa un valor float.
+
+    ```python
+    from libs import materia
+
+    materia.gmol(18.01528,'H2 O') 
+    ```
+
+    Regresa:
+
+    ```python
+    1.000015542603386
+    ```
+    '''
     return gramos/umacompuesto(compuesto)
 
 # Obtiene los mol del compuesto utilizando la función de umacompuesto() 
 def molg(moles, compuesto):
+    '''
+    Convierte moles de un compuesto a gramos. Utiliza el mismo parser y regresa un valor float.
+
+    ```python
+    materia.molg(1, 'H2 O')
+    ```
+
+    Regresa:
+
+    ```python
+    18.015
+    ```
+    '''
     return moles * umacompuesto(compuesto)

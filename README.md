@@ -244,7 +244,7 @@ Regresa:
 |------------------------------|--------------------------------------------------------------------------------------------------------|
 | ```_umaelemento(elemento)``` | Checa la UMA de un elemento en el contenedor.                                                          |
 | ```_cosplit(compuesto)```    | Parser de ecuaciones químicas basado en regex.                                                         |
-| ```_intconv(num)```               | Intenta convertir números a enteros. Auxiliar en el algoritmo de reconocimiento de fórmulas químicas |
+| ```_intconv(num)```               | Intenta convertir números a enteros. Auxiliar en el algoritmo de reconocimiento de fórmulas químicas. |
 
 ---
 

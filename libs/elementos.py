@@ -4,6 +4,33 @@ import pandas as pd
 
 # Generando la clase elemento
 class Elemento:
+    '''
+    Cada elemento tiene los siguientes atributos:
+
+    | Nombre del Atributo       | Uso
+    |---------------------------|---------------------|
+    | Elemento                  | ```.elemento```     |
+    | Nombre                    | ```.nombre```       |
+    | Número Atómico            | ````.z````          |
+    | UMA                       | ````.uma````        |
+    | Periodo                   | ````.periodo````    |
+    | Grupo                     | ````.grp````        |
+    | Configuración Electrónica | ````.c_electron```` |
+    | Protones                  | ````.protones````   |
+    | Electrones                | ````.electrones```` |
+    | Neutrones                 | ```.neutrones```    |
+
+    Llamamos al elemento por su símbolo.
+
+    Ejemplo de uso:
+
+    ```python
+    from libs import elementos
+    elementos.He.nombre
+    ```
+
+    Nos daría: ```"Helio"``` 
+    '''
     def __init__(self, elemento, nombre, z, uma, periodo, grp, c_electron, protones, electrones,neutrones): # Genera el constructor que apsa los valores dentro de la clase
         self.elemento = elemento
         self.nombre = nombre
@@ -17,6 +44,28 @@ class Elemento:
         self.neutrones = neutrones
 
     def imprimirElemento(self): # En esta función se imprimen los datos del elemento 
+        '''
+        Imprime un resumen del elemento
+
+        Ejemplo:
+
+        ```python
+        from libs import elementos
+        elementos.He.imprimirElemento()
+        ```
+        ```python
+        Elemento: He
+        Nombre: Helio
+        Número Atómico: 2
+        UMA: 4.002
+        Periodo: 1
+        Grupo: 18
+        Configuración Electrónica:  1s2
+        Protones: 2
+        Electrones 2
+        Neutrones: 2.0
+        ```
+        '''
         print("Elemento:", self.elemento)
         print("Nombre:", self.nombre)
         print("Número Atómico:", self.z)
@@ -28,11 +77,28 @@ class Elemento:
         print("Electrones", self.electrones)
         print("Neutrones:", self.neutrones)
         
-    def getElemento(self): # Devuelve el valor del elemento dentro de un diccionario
+    def getElemento(self):
+        '''
+        Regresa un diccionario conteniendo todos los atributos del elemento.
+        
+        Ejemplo:
+        ```python
+        from libs import elementos
+        elementos.He.getElemento()
+        ```
+
+        ```python
+        {'Elemento': 'He', 'Nombre': 'Helio', 'Z': 2, 'UMA': 4.002, 'Periodo': 1, 'Grupo': '18', 'C_Electronica': ' 1s2', 'Protones': 2, 'Electrones': 2, 'Neutrones': 2.0}   
+        ```
+        '''
+         # Devuelve el valor del elemento dentro de un diccionario
         return {"Elemento":self.elemento , "Nombre":self.nombre, "Z":self.z, "UMA":self.uma, "Periodo":self.periodo, "Grupo":self.grp, "C_Electronica":self.c_electron,"Protones":self.protones,"Electrones":self.electrones, "Neutrones":self.neutrones}
 
 
 def imprimirTabla(): # Esta función sirve apra imprimir la tabla periódica
+    '''
+    Imprime la tabla periódica a la consola.
+    '''
     Tabla = '''
           -----                                                               -----
         1 | H |                                                               |He |
