@@ -67,8 +67,3 @@ def get_OH(OH):
     res['Concentración'] = _getConcentracion(res['H+'], res['OH-'])
 
     return res # Se regresa el valor 
-
-# print(get_H(10))
-# print(get_pH(10))
-# print(get_OH(10))
-# print(get_pOH(10))
