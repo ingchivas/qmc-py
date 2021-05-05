@@ -30,8 +30,8 @@ class Elemento:
         return {"Elemento":self.elemento , "Nombre":self.nombre, "Z":self.z, "UMA":self.uma, "Periodo":self.periodo, "Grupo":self.grp, "C_Electronica":self.c_electron,"Protones":self.protones,"Electrones":self.electrones, "Neutrones":self.neutrones}
 
 
-    def imprimirTabla():
-        Tabla = '''      -----                                                               -----
+def imprimirTabla():
+    Tabla = '''      -----                                                               -----
         1 | H |                                                               |He |
         |---+----                                       --------------------+---|
         2 |Li |Be |                                       | B | C | N | O | F |Ne |
@@ -51,7 +51,7 @@ class Elemento:
                     |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|
         Actinide   |Ac |Th |Pa | U |Np |Pu |Am |Cm |Bk |Cf |Es |Fm |Md |No |Lw |
                     -------------------------------------------------------------'''  
-        print(Tabla)
+    print(Tabla)
 
 #INSTANCIAS
     
