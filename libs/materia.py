@@ -1,7 +1,9 @@
+# Importando las librerías auxiliares
 import math
 import re
 import numpy as np
 
+# En esta sección, se va a incluir un diccionario con todas las unidades de masa atómica de todos los elementos de la tabla
 uma_dc = {"H": 1.008,"He": 4.003,"Li": 6.94 ,"Be": 9.012,"B": 10.81,"C": 12.011,"N": 14.007,"O": 15.999,"F": 18.998,
     "Ne": 20.180,"Na": 22.990,"Mg": 24.305,"Al": 26.982,"Si": 28.085,"P": 30.974,"S": 32.06,"Cl": 35.45,"Ar": 39.95,"K": 39.098,"Ca": 40.078,
     "Sc": 44.956 ,"Ti": 47.867,"V": 50.942,"Cr": 51.996,"Mn": 54.938,"Fe": 55.845,"Co": 58.933 ,"Ni": 58.693,"Cu": 63.546,
@@ -17,6 +19,7 @@ uma_dc = {"H": 1.008,"He": 4.003,"Li": 6.94 ,"Be": 9.012,"B": 10.81,"C": 12.011,
     "Md": 258,"No": 259,"Lr": 262,"Rf": 261,"Ha": 262,"Nt": 263,"Gp": 264,"Hr": 265,"Wl": 266,
     "Mv": 269,"Pl": 272,"Da": 270,"Tf": 272,"Eo": 276,"Me": 279,"Nc": 282,"El": 286,"On": 288
 }
+# En esta variable, se almacena el diccionario de números atómicos de cada elemento de la tabla
 Z = {
     "H": 1,"He": 2, "Li": 3, "Be": 4, "B": 5, "C": 6, "N": 7, "O": 8, "F": 9, "Ne": 10, "Na": 11,
     "Mg": 12, "Al": 13, "Si": 14, "P": 15, "S": 16, "Cl": 17, "Ar": 18, "K": 19, "Ca": 20,"Sc": 21,"Ti": 22,"V": 23,"Cr": 24,"Mn": 25,
@@ -30,34 +33,40 @@ Z = {
     "Hr": 108,"Wl": 109,"Mv": 110,"Pl": 111,"Da": 112,"Tf": 113,"Eo": 114,"Me": 115,"Nc": 116,"El": 117,"On": 118
 }
 
+# En esta función, se toma un compuesto y se divide en sus elementos
 def _cosplit(compuesto):
-    com = compuesto.split(' ')
-    div = []
-    for i in range(len(com)):
-        a = re.findall('[A-Z][a-z]?|[0-9]+', com[i])
-        div.append(a)
-    return div
+    com = compuesto.split(' ') # Separa el compuesto en secciones
+    div = [] # Inicia una lista llamada 'div'
+    for i in range(len(com)): # Por cada sección
+        a = re.findall('[A-Z][a-z]?|[0-9]+', com[i]) # Obtiene el elemento y su cantidad de átomos en una lista
+        div.append(a) # Añade la lista [elemento, número de átomos] a la lista div
+    return div # Regresa la lista de divisiones
 
-def _intconv(num):
-    try:
+# Convierte números enteros para su uso dentro de las funciones químicas
+def _intconv(num): 
+    try: # Intenta hacer la conversión
         n = int(num)
         return n
-    except:
+    except: # De lo contrario, continúa con el programa
         pass
 
+# Obtiene la uma de un elemento determinado
 def _umaelemento(elemento):
     check = elemento
-    try:
-        if str(check) in uma_dc:
-            umaa = uma_dc.get(check)
-            return umaa
-        else:
-            pass
-    except:
+    try: # Intenta utilizar el valor introducido
+        if str(check) in uma_dc: # Revisa si el valor existe dentro del diccionario
+            umaa = uma_dc.get(check) # Asigna el valor correspondiente
+            return umaa # Regresa el valor
+        else: # De no encontrarlo, el programa sigue
+            print("Valor no encontrado")
+    except: # De haber algun error, levanta un mensaje de error
         print("Revise su sintaxis")
+
+# Obtiene la uma de un compuesto determinado
 def umacompuesto(compuesto):
-    div = _cosplit(compuesto)
-    acumcomp=0
+    div = _cosplit(compuesto) # Se apoya de la función _cosplit() para separar el compuesto en elementos
+    acumcomp = 0
+    # En la siguiente cadena de ifs se va a catalogar el tipo de compuesto y se harán los cálculos acorde
     for j in range(len(div)):
         for n in range(len(div[j])):
             if len(div[j]) == 3:
@@ -65,13 +74,11 @@ def umacompuesto(compuesto):
                 compa = aucompa * int(div[j][2])* int(div[j][0])
                 acumcomp += int(compa)
                 break
-
             
             elif len(div[j])==1:
                 aucompb = _umaelemento(str(div[j][0]))
                 acumcomp += aucompb
                 break
-            
             
             elif len(div[j]) == 2 and type(_intconv(div[j][1])==int):
                 aucompc = _umaelemento(str(div[j][0]))
@@ -85,15 +92,15 @@ def umacompuesto(compuesto):
 
                 acumcomp += compd
                 break
-            
-    
-    return acumcomp
+    return acumcomp # Devuelve el valor
 
+# Obtiene la uma percentual
 def umapercentual(compuesto):
-    utotal = umacompuesto(compuesto)
-    div = _cosplit(compuesto)
+    utotal = umacompuesto(compuesto) # Se apoya de la función umacompuesto() para obtener la uma
+    div = _cosplit(compuesto) # Se apoya de la función _cosplit() para obtener el compuesto dividido
     
     upercentual = {}
+    # Cataloga cada elemento con sus átomos y hace los cálculos acorde
     for j in range(len(div)):
         for n in range(len(div[j])):
             if len(div[j]) == 3:
@@ -121,19 +128,12 @@ def umapercentual(compuesto):
                 compd = aucompd * int(div[j][0])
                 upercentual[str(div[j][1])] = (compd/utotal)*100
                 break
+    return upercentual # Devuelve el valor     
 
-    return upercentual        
-
+# Obtiene los gramos / mol del compuesto utilizando la función de umacompuesto()
 def gmol(gramos, compuesto):
     return gramos/umacompuesto(compuesto)
-    
+
+# Obtiene los mol del compuesto utilizando la función de umacompuesto() 
 def molg(moles, compuesto):
     return moles * umacompuesto(compuesto)
-
-
-
-# print(umacompuesto("Na Cl"))
-# print(umapercentual("Na Cl"))
-# print(umacompuesto("C6 H12 O6"))
-# print(gmol(58.44, "Na Cl"))
-# conf_electric()

@@ -1,8 +1,10 @@
+# Importando las librerías que se van a utilizar
 import numpy as np
 import pandas as pd
 
+# Generando la clase elemento
 class Elemento:
-    def __init__(self, elemento, nombre, z, uma, periodo, grp, c_electron, protones, electrones,neutrones):
+    def __init__(self, elemento, nombre, z, uma, periodo, grp, c_electron, protones, electrones,neutrones): # Genera el constructor que apsa los valores dentro de la clase
         self.elemento = elemento
         self.nombre = nombre
         self.z = z
@@ -14,7 +16,7 @@ class Elemento:
         self.electrones = electrones
         self.neutrones = neutrones
 
-    def imprimirElemento(self):
+    def imprimirElemento(self): # En esta función se imprimen los datos del elemento 
         print("Elemento:", self.elemento)
         print("Nombre:", self.nombre)
         print("Número Atómico:", self.z)
@@ -26,12 +28,13 @@ class Elemento:
         print("Electrones", self.electrones)
         print("Neutrones:", self.neutrones)
         
-    def getElemento(self):
+    def getElemento(self): # Devuelve el valor del elemento dentro de un diccionario
         return {"Elemento":self.elemento , "Nombre":self.nombre, "Z":self.z, "UMA":self.uma, "Periodo":self.periodo, "Grupo":self.grp, "C_Electronica":self.c_electron,"Protones":self.protones,"Electrones":self.electrones, "Neutrones":self.neutrones}
 
 
-def imprimirTabla():
-    Tabla = '''      -----                                                               -----
+def imprimirTabla(): # Esta función sirve apra imprimir la tabla periódica
+    Tabla = '''
+          -----                                                               -----
         1 | H |                                                               |He |
         |---+----                                       --------------------+---|
         2 |Li |Be |                                       | B | C | N | O | F |Ne |
@@ -47,15 +50,16 @@ def imprimirTabla():
         7 |Fr |Ra |ACT|
         -------------
                     -------------------------------------------------------------
-        Lanthanide |La |Ce |Pr |Nd |Pm |Sm |Eu |Gd |Tb |Dy |Ho |Er |Tm |Yb |Lu |
+        Lantánidos |La |Ce |Pr |Nd |Pm |Sm |Eu |Gd |Tb |Dy |Ho |Er |Tm |Yb |Lu |
                     |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|
-        Actinide   |Ac |Th |Pa | U |Np |Pu |Am |Cm |Bk |Cf |Es |Fm |Md |No |Lw |
-                    -------------------------------------------------------------'''  
+        Actínidos  |Ac |Th |Pa | U |Np |Pu |Am |Cm |Bk |Cf |Es |Fm |Md |No |Lw |
+                    -------------------------------------------------------------
+        '''  
     print(Tabla)
 
-#INSTANCIAS
-    
-H=Elemento("H","Hidrogeno",1,1.0070000000000001,1,"1"," 1s1",1,1,0.0)
+# Generando las instancias de cada elemento con sus datos y constantes
+# El órden de los argumentos son los siguientes: elemento, nombre, z, uma, periodo, grp, c_electron, protones, electrones, neutrones
+H=Elemento("H","Hidrogeno",1,1.007,1,"1"," 1s1",1,1,0.0)
 He=Elemento("He","Helio",2,4.002,1,"18"," 1s2",2,2,2.0)
 Li=Elemento("Li","Litio",3,6.941,2,"1"," [He] 2s1",3,3,4.0)
 Be=Elemento("Be","Berilio",4,9.012,2,"2"," [He] 2s2",4,4,5.0)
