@@ -57,7 +57,7 @@ def imprimirTabla(): # Esta función sirve apra imprimir la tabla periódica
         '''  
     print(Tabla)
 
-# Generando las instancias de cada elemento con sus datos y constantes
+# Generando las instancias de cada elemento con sus datos y constantes usando el InstanciadorMAX
 # El órden de los argumentos son los siguientes: elemento, nombre, z, uma, periodo, grp, c_electron, protones, electrones, neutrones
 H=Elemento("H","Hidrogeno",1,1.007,1,"1"," 1s1",1,1,0.0)
 He=Elemento("He","Helio",2,4.002,1,"18"," 1s2",2,2,2.0)

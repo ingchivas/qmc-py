@@ -6,7 +6,7 @@ import numpy as np
 def _convervol(v, unidadesvol):
     if unidadesvol == 'ml': # Se convierte el volumen de mililitros a litros
         v /= 1000
-    elif unidadesvol == 'l': # Se deja el volumen de litros
+    elif unidadesvol == 'L': # Se deja el volumen de litros
         pass
     elif unidadesvol == 'm3': # Se convierte el volumen de metros cúbicos a litros
         v *= 1000
