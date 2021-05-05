@@ -56,7 +56,7 @@ def get_OH(OH):
 
     return res
 
-print(get_H(10))
-print(get_pH(10))
-print(get_OH(10))
-print(get_pOH(10))
+# print(get_H(10))
+# print(get_pH(10))
+# print(get_OH(10))
+# print(get_pOH(10))
