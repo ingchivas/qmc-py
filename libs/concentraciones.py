@@ -5,14 +5,13 @@ def _getpeq(m_molecular, carga):
     peso_eq = m_molecular / carga
     return peso_eq
 
-def _convermasa(masa, u_masa):
-    if u_masa == 'g':
+def _convermasa(masa, u_masa = 'g', u_masaout = 'g'):
+    if u_masa == 'g' and u_masaout == 'g':
         pass
-    elif u_masa == 'mg':
+    elif u_masa != 'g' and u_masaout == 'mg':
         masa /= 1 * (10**3)
-    elif u_masa == 'kg':
+    elif u_masa != 'g' and u_masaout == 'kg':
         masa *= 1000
-    
     return masa
 
 def _convermasaKG(masa, u_masa):
@@ -47,15 +46,15 @@ def masa_msoluto(p_masa, m_solucion,u_masa='g'):
     return msoluto
 
 def masa_msolvente(p_masa,m_soluto, u_masa = 'g'):
-    m_soluto = _convermasa(m_soluto)
+    m_soluto = _convermasa(m_soluto, u_masa)
 
     m_solvente = ((m_soluto * 100) - (p_masa * m_soluto)) / p_masa
 
     return m_solvente
 
 def masa_pmasa(m_soluto,m_solucion, u_masa = 'g'):#Si sabemos m_solucion
-    m_solucion = _convermasa(m_solucion)
-    m_soluto = _convermasa(m_soluto)
+    m_solucion = _convermasa(m_solucion, u_masa)
+    m_soluto = _convermasa(m_soluto, u_masa)
 
     porcenmasa = (m_soluto / m_solucion) * 100
     
@@ -206,6 +205,45 @@ def molal_msolvente(m_molecular, m_soluto, molal, u_masa = 'g'):
     m_solvente = m_soluto/(molal*m_molecular)
     return m_solvente
 
-def molal_mmolecular(m_soluto, m_solvente, molal, u_masa = 'g'):
-    m_soluto()
+def molal_mmolecular(m_soluto, m_solvente, molal, u_masasoluto = 'g', u_masasolvente = 'kg'):
+    m_soluto=_convermasa(m_soluto, u_masasoluto)
+    m_solvente = _convermasaKG(m_solvente, u_masasolvente)
 
+    m_molecular = m_soluto/(molal * m_solvente)
+    return m_molecular
+
+def molal_molal(m_soluto, m_solvente, m_molecular, u_masasoluto = 'g', u_masasolvente = 'kg'):
+    m_soluto=_convermasa(m_soluto, u_masasoluto)
+    m_solvente = _convermasaKG(m_solvente, u_masasolvente)
+
+    molal = m_soluto/(m_molecular*m_solvente)
+    return molal
+
+def frac_molal(*concentraciones):
+    try:
+        mol_total = sum(float(i) for i in concentraciones)
+        res = {}
+        for k in range(len(concentraciones)):
+            res['C{}'.format(k+1)] = np.round(concentraciones[k]/mol_total,3)
+        return res
+
+    except:
+        return 'Revisa los datos, deben ser tipo int o float'
+
+def ppm_msoluto(v, ppm, u_volumen = 'L'):#regresa mg
+    v = _convervol(v, u_volumen)
+
+    m_soluto = (ppm * v)/ (1 * (10**6))
+    return m_soluto
+
+def ppm_vol(m_soluto, ppm, u_masa = 'mg'):
+    m_soluto = _convermasa(m_soluto, u_masa, u_masaout = 'mg')
+    vol = (m_soluto* 1000000) / ppm
+    return vol
+
+def ppm_ppm(m_soluto, v, u_volumen = 'L', u_masa = 'mg'):
+    m_soluto = _convermasa(m_soluto, u_masa, u_masaout = 'mg')
+    v = _convervol(v, u_volumen)
+
+    ppm = (m_soluto / v) * 1000000
+    return ppm
