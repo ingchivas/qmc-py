@@ -152,7 +152,7 @@ def molaridad_moles(v, molaridad, u_volumen = 'L'):
     moles = molaridad*v
     return moles
 
-def molaridadM_moles(moles, v , u_volumen='L'):
+def molaridad_molesM(moles, v , u_volumen='L'):
     v=_convervol(v, u_volumen)
     molaridad = v*moles
 
