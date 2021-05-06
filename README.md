@@ -305,7 +305,7 @@ Regresa:
 {'p2': 1.25, 'CumpleLey': True}
 ```
 
-Recordemos que la unidad es atmósfera, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
 Ejemplo de uso de ```BoyleV1(v2,p1,p2,unidadesvol,unidadespres)```
 
@@ -327,7 +327,7 @@ Regresa:
 {'v1': 1.7, 'CumpleLey': True}
 ```
 
-Recordemos que la unidad es litro, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+Recordemos que la unidad es **litro**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
 Ejemplo de uso de ```BoyleV2(v1,p1,p2,unidadesvol,unidadespres)```
 
@@ -379,7 +379,7 @@ Regresa:
 {'p2': 0.757530619000331, 'CumpleLey': True}
 ```
 
-Recordemos que la unidad es atmósfera, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
 Ejemplo de uso de ```LussacT2(t1,p1,p2,unidadespres,unidadestemp)```
 
@@ -398,5 +398,54 @@ Regresa:
 {'t2': 233.48453608247422, 'CumpleLey': True}
 ```
 
-Recordemos que la unidad es Kelvin, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
+### Charles
+
+> La ley de Charles situa un gas a presion constante, pero un cambio en el volumen-temperatura.
+> $$\frac{V_1}{T_1} = \frac{V_2}{T_2}$$
+
+| Parámetros para {DO} en Charles | Dato que obtiene    | Datos que necesita {DP}                  |
+|---------------------------------|---------------------|------------------------------------------|
+| V1   ```CharlesV1({DP})```      | Presión inicial     | ```t1,t2,v2,unidadesvol,unidadestemp```  |
+| V2   ```CharlesV2({DP})```      | Presión final       | ```t1,t2,v1,unidadesvol,unidadestemp```  |
+| T1   ```CharlesT1({DP})```      | Volumen inicial     | ```t2,v1,v2,unidadesvol,unidadestemp```  |
+| T2   ```CharlesT2({DP})```      | Volumen final       | ```t1,v1,v2,unidadesvol,unidadestemp```  |
+
+Ejemplo de uso de ```CharlesV2(t1,t2,v1,unidadesvol,unidadestemp)```
+
+> Se tiene un gas a una presión constante de 560 mm de Hg, el gas ocupa un volumen de 23 cm³ a una temperatura que está en 69°C . ¿Qué volumen ocupará el gas a una temperatura de 13°C?
+
+```python
+from libs import gases
+
+gases.CharlesV2(69,13,23, unidadesvol = 'cm3', unidadestemp = 'C')
+
+```
+
+Obtenemos:
+
+```python
+{'v2': 0.01923391812865497, 'CumpleLey': True}
+```
+
+Recordemos que la unidad es **Litros**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+Ejemplo de uso de ```CharlesT1(t2,v1,v2,unidadesvol,unidadestemp)```
+
+> Calcular la temperatura absoluta a la cual se encuentra un gas que ocupa un volumen de 0.4 litros a una presión de una atmósfera, si a una temperatura de 45°C ocupa un volumen de 1.2 litros a la misma presión.
+
+```python
+from libs import gases
+
+gases.CharlesT1(45,0.4,1.2, unidadestemp = 'C')
+
+```
+
+Obtenemos:
+
+```python
+{'t1': 106.0, 'CumpleLey': True}
+```
+
+Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
