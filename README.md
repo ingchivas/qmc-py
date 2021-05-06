@@ -40,7 +40,7 @@ El paquete se divide en los siguientes módulos:
 |-----------------|------------------------------------------------------------------------------------------------------------------|
 | elementos       | Contiene los elementos de la tabla periódica instanciados en la clase Elemento.                                  |
 | materia         | Contiene módulos para resolver problemas de UMA, de compuestos y elementos, incluyendo la UMA percentual.        |
-| gases           | Módulos para resolver problemas de Ley de Boyle, Ley de Lussac, Ley de Charles, Ley Combinada de los Gases,      |
+| gases           | Módulos para resolver problemas de Ley de Boyle, Ley de Lussac, Ley de Charles, Ley Combinada de los Gases.      |
 | concentraciones | Módulos para resolver problemas de concentración. [MASA,VOLUMEN,PESO_LITRO,MOLARIDAD, NORMAL, MOLAL, FRACCIONMOL, PPM] |
 | pH              | Módulos para resolver problemas de pH.                                                                           |
 
@@ -607,3 +607,128 @@ Regresa:
 ---
 
 ## Concentraciones
+
+## pH
+
+| Métodos                                            | Utilidad                                                                                                |
+|----------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| ```_tipoPH(valorpH, valorpOH, valorH, valorOH)```  | Método encapsulado que comprueba el tipo de solución. Regresa un string.                                |
+| ```_getConcentración(valorH, valorOH)```           | Método encapsulado que calcula la concentración de una solución. Regresa un int                         |
+| ```get_pH(valorH)```                               | Método que, al recibir un valor en específico (pH), calcula los restantes (pOH, H, OH). Regresa un dict |
+| ```get_pOH(valorOH)```                             | Método que mediante la obtención de el valor de pOH, calcula los demás (pH, H, OH). Regresa un dict     |
+| ```get_H(valorH)```                                | Método que se encarga de calcular valores de (pH, pOH, OH) al obtener el valor de H. Regresa un dict    |
+| ```get_OH(valorOH)```                              | Método que calcula los valores de (pH, pOH, H) al tener el valor OH. Regresa un dict                    |  
+
+### _tipoPH(valorpH, valorpOH, valorH, valorOH)
+
+Los valores se tienen que pasar en el orden indicado para que se pueda hacer una comparación correcta y no suelte ningún error.
+Por ejemplo, para la fórmula química del cloro sería ```_tipoPH(13, 1, 1e-13, 0.1)```.
+
+Ejemplo:
+
+```python
+from libs import ph
+
+_tipoPH(7, 7, 1e-7, 1e-7)
+```
+
+Regresa:
+
+```python
+'neutra'
+```
+
+### _getConcentración(valorH, valorOH)
+
+Los valores se tienen que pasar por medio de comas, y se realizará la operación indicada.
+Por ejemplo, para la fórmula química del cloro sería ```_getConcentración(1e-13, 0.1)```.
+
+Ejemplo:
+
+```python
+from libs import ph
+
+_getConcentración(1e-7, 1e-7)
+```
+
+Regresa:
+
+```python
+1e-14
+```
+
+### get_pH(pH)
+
+El único valor que se tiene que pasar como argumento es el valor de pH de la solución. Se harán un cierto número de operaciones y regresará un diccionario con lo restante.
+Por ejemplo, para la fórmula química del cloro sería ```get_pH(13)```.
+
+Ejemplo:
+
+```python
+from libs import ph
+
+get_pH(7)
+```
+
+Regresa:
+
+```python
+{'pH':7,'pOH':7,'H+':1e-7,'OH-':1e-7, 'Tipo':'neutra', 'Concentración':1e-14}
+```
+
+### get_pOH(pOH)
+
+El único valor que se tiene que pasar como argumento es el valor de pOH de la solución. Se harán un cierto número de operaciones y regresará un diccionario con lo faltante.
+Por ejemplo, para la fórmula química del cloro sería ```get_pOH(1)```.
+
+Ejemplo:
+
+```python
+from libs import ph
+
+get_pOH(7)
+```
+
+Regresa:
+
+```python
+{'pH':7,'pOH':7,'H+':1e-7,'OH-':1e-7, 'Tipo':'neutra', 'Concentración':1e-14}
+```
+
+### get_H(H)
+
+El único valor que se tiene que pasar como argumento es el valor de H de la solución. Se harán un cierto número de operaciones y regresará un diccionario con lo faltante.
+Por ejemplo, para la fórmula química del cloro sería ```get_H(1e-13)```.
+
+Ejemplo:
+
+```python
+from libs import ph
+
+get_H(1e-7)
+```
+
+Regresa:
+
+```python
+{'pH':7,'pOH':7,'H+':1e-7,'OH-':1e-7, 'Tipo':'neutra', 'Concentración':1e-14}
+```
+
+### get_OH(OH)
+
+El único valor que se tiene que pasar como argumento es el valor de OH de la solución. Se harán un cierto número de operaciones y regresará un diccionario con lo faltante.
+Por ejemplo, para la fórmula química del cloro sería ```get_OH(1e-13)```.
+
+Ejemplo:
+
+```python
+from libs import ph
+
+get_OH(1e-7)
+```
+
+Regresa:
+
+```python
+{'pH':7,'pOH':7,'H+':1e-7,'OH-':1e-7, 'Tipo':'neutra', 'Concentración':1e-14}
+```

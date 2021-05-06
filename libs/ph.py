@@ -13,7 +13,7 @@ def _tipoPH(pH, pOH, H, OH):
 
 # Esta función regresa la concentración de la solución
 def _getConcentracion(H, OH):
-    return (H*OH),3 # Regresa la operación
+    return (H*OH) # Regresa la operación
 
 # Se usa esta función si lo que se tiene es el PH de la solución
 def get_pH(pH): 

@@ -1,6 +1,10 @@
 import numpy as np
 from .gases import _convervol
 
+def _getpeq(m_molecular, carga):
+    peso_eq = m_molecular / carga
+    return peso_eq
+
 def _convermasa(masa, u_masa):
     if u_masa == 'g':
         pass
@@ -11,22 +15,32 @@ def _convermasa(masa, u_masa):
     
     return masa
 
+def _convermasaKG(masa, u_masa):
+    if u_masa == 'g':
+        masa /= 1000
+    elif u_masa == 'mg':
+        masa /= 1 * (10**6)
+    elif u_masa == 'kg':
+        pass
+    
+    return masa
+
 def masa_masasolucion(m_soluto, m_solvente, u_masa = 'g'):
     m_soluto = _convermasa(m_soluto,u_masa)
     m_solvente = _convermasa(m_solvente,u_masa)
 
-    msolucion = m_soluto + m_solvente
+    m_solucion = m_soluto + m_solvente
 
-    return msolucion
+    return m_solucion
 
 def masa_masasolucionp(p_masa,m_soluto,u_masa='g'):
     m_soluto = _convermasa(m_soluto,u_masa)
-    msolucion = (m_soluto / p_masa) * 100
+    m_solucion = (m_soluto / p_masa) * 100
 
-    return msolucion
+    return m_solucion
 
 def masa_msoluto(p_masa, m_solucion,u_masa='g'):
-    m_solucion = _convermasa(m_solucion)
+    m_solucion = _convermasa(m_solucion,u_masa)
 
     msoluto = (m_solucion * p_masa) / 100
 
@@ -35,9 +49,9 @@ def masa_msoluto(p_masa, m_solucion,u_masa='g'):
 def masa_msolvente(p_masa,m_soluto, u_masa = 'g'):
     m_soluto = _convermasa(m_soluto)
 
-    msolvente = ((m_soluto * 100) - (p_masa * m_soluto)) / p_masa
+    m_solvente = ((m_soluto * 100) - (p_masa * m_soluto)) / p_masa
 
-    return msolvente
+    return m_solvente
 
 def masa_pmasa(m_soluto,m_solucion, u_masa = 'g'):#Si sabemos m_solucion
     m_solucion = _convermasa(m_solucion)
@@ -58,27 +72,27 @@ def vol_vsolucion(v_soluto, v_solvente, u_volumen = 'L'):
     v_soluto = _convervol(v_soluto, u_volumen)
     v_solvente = _convervol(v_solvente, u_volumen)
 
-    vsolucion = v_soluto + v_solvente
-    return vsolucion
+    v_solucion = v_soluto + v_solvente
+    return v_solucion
 
 def vol_vsolucionP(v_soluto, p_volumen, u_volumen = 'L'):
     v_soluto = _convervol(v_soluto, u_volumen)
-    vsolucion = (v_soluto / p_volumen) * 100
+    v_solucion = (v_soluto / p_volumen) * 100
 
-    return vsolucion
+    return v_solucion
 
 def vol_vsoluto(v_solucion, p_volumen, u_volumen = 'L'):
     v_solucion = _convervol(v_solucion, u_volumen)
 
-    vsoluto = (v_solucion * p_volumen) / 100
-    return vsoluto
+    v_soluto = (v_solucion * p_volumen) / 100
+    return v_soluto
 
 def vol_vsolvente(v_soluto,p_volumen, u_volumen = 'L'):
     v_soluto = _convervol(v_soluto,u_volumen)
 
-    vsolvente = ((v_soluto * 100) - (p_volumen * v_soluto)) / p_volumen
+    v_solvente = ((v_soluto * 100) - (p_volumen * v_soluto)) / p_volumen
 
-    return vsolvente
+    return v_solvente
 
 def vol_pvolumen(v_solucion, v_soluto, u_volumen = 'L'):
     v_soluto = _convervol(v_soluto,u_volumen)
@@ -96,8 +110,8 @@ def vol_pvolumen(v_soluto, v_solvente, u_volumen = 'L'):
 
 def pl_msoluto(c_pesolitro, v_solucion, u_volumen = 'L'):
     v_solucion = _convervol(v_solucion, u_volumen)
-    gr = c_pesolitro * v_solucion
-    return gr
+    m_soluto = c_pesolitro * v_solucion
+    return m_soluto
 
 def pl_litros(m_soluto, c_pesolitro, u_masa = 'g'):
     m_soluto = _convermasa(m_soluto, u_masa)
@@ -114,15 +128,15 @@ def pl_gl(m_soluto, v_solucion, u_masa = 'g', u_volumen = 'L'):
 
 def molaridad_msoluto(m_molecular,v, molaridad, u_volumen = 'L' ):
     v = _convervol(v, u_volumen)
-    gr = molaridad * m_molecular * v
-    return gr
+    m_soluto = molaridad * m_molecular * v
+    return m_soluto
 
 def molaridad_mmolecular(m_soluto, v, molaridad, u_masa = 'g', u_volumen = 'L'):
     v = _convervol(v, u_volumen)
     m_soluto=_convermasa(m_soluto, u_masa)
-    Mm = m_soluto / (molaridad * v)
+    m_molecular = m_soluto / (molaridad * v)
 
-    return Mm
+    return m_molecular
 
 def molaridad_volumenM(moles, molaridad):
     v = moles * molaridad
@@ -144,4 +158,54 @@ def moles_molaridadM(moles, v , u_volumen='L'):
     molaridad = v*moles
 
     return molaridad
+
+def normal_msolutoPEQ(peso_eq, v,normal, u_volumen = 'L' ):
+    v = _convervol(v, u_volumen)
+
+    m_soluto = normal*peso_eq*v
+    return m_soluto
+
+def normal_msoluto(m_molecular, carga, v,normal, u_volumen = 'L'):
+    v = _convervol(v, u_volumen)
+    peso_eq = _getpeq(m_molecular, carga)
+    m_soluto = normal*peso_eq*v
+
+    return m_soluto
+
+def normal_peq(m_soluto, v, normal, u_masa = 'g', u_volumen = 'L'):
+    v = _convervol(v, u_volumen)
+    m_soluto = _convermasa(m_soluto, u_masa)
+
+    peso_eq = m_soluto/(normal*v)
+    return peso_eq
+
+def normal_normalPEQ(peso_eq, m_soluto, v, u_masa = 'g', u_volumen = 'L'):
+    v = _convervol(v, u_volumen)
+    m_soluto = _convermasa(m_soluto, u_masa)
+
+    normal = m_soluto / (peso_eq*v)
+    return normal
+
+def normal_normal(m_molecular, m_soluto,carga, v, u_masa = 'g', u_volumen = 'L'):
+    v = _convervol(v, u_volumen)
+    m_soluto = _convermasa(m_soluto, u_masa)
+    peso_eq = _getpeq(m_molecular, carga)
+
+    normal = m_soluto / (peso_eq*v)
+    return normal
+
+def molal_msoluto(m_molecular, m_solvente, molal, u_masa = 'g'):
+    m_solvente = _convermasaKG(m_solvente, u_masa)
+    m_soluto = molal * m_molecular * m_solvente
+
+    return m_soluto
+
+def molal_msolvente(m_molecular, m_soluto, molal, u_masa = 'g'):
+    m_soluto = _convermasa(m_soluto, u_masa)
+
+    m_solvente = m_soluto/(molal*m_molecular)
+    return m_solvente
+
+def molal_mmolecular(m_soluto, m_solvente, molal, u_masa = 'g'):
+    m_soluto()
 
