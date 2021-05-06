@@ -253,9 +253,107 @@ Regresa:
 | Métodos                 | Utilidad                                                                                               |
 |-------------------------|--------------------------------------------------------------------------------------------------------|
 | ```Boyle{DO}({DP})```   | Obtiene el dato faltante en un problema de gases de la Ley de Boyle.                                   |
-| ```Charles{DO}({DP})``` | Obtiene el dato faltante en un problema de gases de la Ley de Charles.                                 |
 | ```Llusac{DO}({DP})```  | Obtiene el dato faltante en un problema de gases de la Ley de Llusac.                                  |
+| ```Charles{DO}({DP})``` | Obtiene el dato faltante en un problema de gases de la Ley de Charles.                                 |
 | ```Combinada{{DO}}```   | Obtiene el dato faltante en un problema de gases de la Ley Combinada de los Gases.                     |
 
 Donde {DO} es nuestro dato a obtener en mayúscula y {DP} son los datos del problema.
 
+Las funciones regresan un diccionario conteniendo el valor float que se busca y un booleano que indica si la ley se cumple o no.
+
+NOTA: **Los valores por defecto para unidades son los siguientes:**
+
+### Unidades por defecto
+
+| Métrica     | Unidad por defecto    | Unidades alternativas disponibles |
+|-------------|-----------------------|-----------------------------------|
+| Volúmen     | ```"L"``` Litro       | ```"ml","cm3","m3"```             |
+| Presión     | ```"atm"``` Atmósfera | ```"pa","mmhg"```                 |
+| Temperatura | ```"k"``` Kelvin      | ```"C","F"```                     |
+
+NOTA: **Los resultados siempre se darán en las unidades por defecto**
+
+### Boyle
+
+> La ley de Boyle situa un gas a temperatura constante, pero un cambio en la presion-volumen. $$P_1V_1=P_2V_2$$.
+
+| Parámetros para {DO} en Boyle | Dato que obtiene | Datos que necesita {DP}                 |
+|-------------------------------|------------------|-----------------------------------------|
+| P1   ```BoyleP1({DP})```      | Presión inicial  | ```v1,v2,p2,unidadesvol,unidadespres``` |
+| P2   ```BoyleP2({DP})```      | Presión final    | ```v1,v2,p1,unidadesvol,unidadespres``` |
+| V1   ```BoyleV1({DP})```      | Volumen inicial  | ```v2,p1,p2,unidadesvol,unidadespres``` |
+| V2   ```BoyleV2({DP})```      | Volumen final    | ```v1,p1,p2,unidadesvol,unidadespres``` |
+
+Ejemplo de uso de ```BoyleP2(v1,v2,p1,unidadesvol,unidadespres)```
+
+> Un gas ocupa 1.5 litros a una presión de 2.5 atm. Si la temperatura permanece constante, ¿Cuál es la presión en mm de Hg, si se pasa a un recipiente de 3 litros?
+
+```python
+from libs import gases
+
+'''
+ Como mi problema tiene los datos en sus unidades por defecto, no es necesario asignar esos argumentos.
+'''
+gases.BoyleP2(1.5,3,2.5)
+
+```
+
+Regresa:
+
+```python
+{'p2': 1.25, 'CumpleLey': True}
+```
+
+Recordemos que la unidad es atmósfera, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+Ejemplo de uso de ```BoyleV1(v2,p1,p2,unidadesvol,unidadespres)```
+
+> Calcular el volumen de un gas a una temperatura constante al recibir una presión de 5 atm, si su volumen es de 3.4 litros a una presión de 2.5 atmósferas.
+
+```python
+from libs import gases
+
+'''
+ Como mi problema tiene los datos en sus unidades por defecto, no es necesario asignar esos argumentos.
+'''
+gases.BoyleV1(3.4,5,2.5)
+
+```
+
+Regresa:
+
+```python
+{'v1': 1.7, 'CumpleLey': True}
+```
+
+Ejemplo de uso de ```BoyleV2(v1,p1,p2,unidadesvol,unidadespres)```
+
+> Una muestra de oxígeno ocupa 4.2 litros a 760 mmHg. ¿Cuál será el volumen del oxígeno a 415 mmHg, si la temperatura permanece constante?
+
+```python
+from libs import gases
+
+'''
+Como mi problema tiene la unidad de presión en mmhg y esta unidad está soportada
+asignamos el parámetro a mmhg.
+'''
+gases.BoyleV2(4.2,760,415,unidadespres = "mmhg")
+
+```
+
+Regresa:
+
+```python
+{'v2': 7.691566265060241, 'CumpleLey': True}
+```
+
+### Llusac
+
+> La ley de Lussac situa un gas a volumen constante, pero un cambio en la presion-temperatura. $$\frac{P_1}{T_1} = \frac{P_2}{T_2}$$
+
+| Parámetros para {DO} en Lussac | Dato que obtiene    | Datos que necesita {DP}                 |
+|--------------------------------|---------------------|-----------------------------------------|
+| P1   ```LussacP1({DP})```      | Presión inicial     | ```v1,v2,p2,unidadesvol,unidadespres``` |
+| P2   ```LussacP2({DP})```      | Presión final       | ```v1,v2,p1,unidadesvol,unidadespres``` |
+| T1   ```LussacT1({DP})```      | Temperatura inicial | ```v2,p1,p2,unidadesvol,unidadespres``` |
+| T2   ```LussacT2({DP})```      | Temperatura final   | ```v1,p1,p2,unidadesvol,unidadespres``` |

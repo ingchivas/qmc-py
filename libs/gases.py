@@ -84,6 +84,27 @@ def BoyleP1(v1,v2,p2, unidadesvol = 'L', unidadespres = 'atm'):
 
 # Esta función sirve para asginar los resultado de funciones anteriores relacionado con Boyle [p2]
 def BoyleP2(v1,v2,p1, unidadesvol = 'L', unidadespres = 'atm'):
+    '''
+    Ejemplo de uso de ```BoyleP2(v1,v2,p1,unidadesvol,unidadespres)```
+
+    > Un gas ocupa 1.5 litros a una presión de 2.5 atm. Si la temperatura permanece constante, ¿Cuál es la presión en mm de Hg, si se pasa a un recipiente de 3 litros?
+
+    ```python
+    from libs import gases
+
+    
+    # Como mi problema tiene los datos en sus unidades por defecto, no es necesario asignar esos argumentos.
+    
+    gases.BoyleP2(1.5,3,2.5)
+
+    ```
+
+    Regresa:
+
+    ```python
+    {'p2': 1.25, 'CumpleLey': True}
+    ```
+    '''
     v1 = _convervol(v1,unidadesvol)
     v2 = _convervol(v2,unidadesvol)
     p1 = _converpres(p1,unidadespres)
@@ -100,6 +121,27 @@ def BoyleP2(v1,v2,p1, unidadesvol = 'L', unidadespres = 'atm'):
 
 # Esta funcion sirve para asignar los resultados de funciones anteriores relacionado con Boyle [v1]
 def BoyleV1(v2,p1,p2, unidadesvol = 'L', unidadespres = 'atm'):
+    '''
+    Ejemplo de uso de ```BoyleV1(v2,p1,p2,unidadesvol,unidadespres)```
+
+    > Calcular el volumen de un gas a una temperatura constante al recibir una presión de 5 atm, si su volumen es de 3.4 litros a una presión de 2.5 atmósferas.
+
+    ```python
+    from libs import gases
+
+    
+    #Como mi problema tiene los datos en sus unidades por defecto, no es necesario asignar esos argumentos.
+    
+    gases.BoyleV1(3.4,5,2.5)
+
+    ```
+
+    Regresa:
+
+    ```python
+    {'v1': 1.7, 'CumpleLey': True}
+    ```
+    '''
     p1 = _converpres(p1,unidadespres)
     p2 = _converpres(p2,unidadespres)
     v2 = _convervol(v2,unidadesvol)
@@ -115,6 +157,27 @@ def BoyleV1(v2,p1,p2, unidadesvol = 'L', unidadespres = 'atm'):
 
 # Esta funcion sirve para asignar los resultados de funciones anteriores relacionado con Boyle[v2]
 def BoyleV2(v1,p1,p2, unidadesvol = 'L', unidadespres = 'atm'):
+    '''
+    Ejemplo de uso de ```BoyleV2(v1,p1,p2,unidadesvol,unidadespres)```
+
+    > Una muestra de oxígeno ocupa 4.2 litros a 760 mmHg. ¿Cuál será el volumen del oxígeno a 415 mmHg, si la temperatura permanece constante?
+
+    ```python
+    from libs import gases
+
+    
+    # Como mi problema tiene la unidad de presión en mmhg y esta unidad está soportada asignamos el parámetro a mmhg.
+    
+    gases.BoyleV2(4.2,760,415,unidadespres = "mmhg")
+
+    ```
+
+    Regresa:
+
+    ```python
+    {'v2': 7.691566265060241, 'CumpleLey': True}
+    ```
+    '''
     v1 = _convervol(v1,unidadesvol)
     p1 = _converpres(p1,unidadespres)
     p2 = _converpres(p2,unidadespres)
