@@ -1,5 +1,5 @@
 import numpy as np
-from gases import _convervol
+from .gases import _convervol
 
 def _convermasa(masa, u_masa):
     if u_masa == 'g':

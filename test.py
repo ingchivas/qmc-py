@@ -31,5 +31,5 @@ from libs import gases
 
 
 
-print(gases.LussacP2(45, 125, 460, unidadespres = 'mmhg', unidadestemp = 'C'))
-
+#print(gases.LussacP2(45, 125, 460, unidadespres = 'mmhg', unidadestemp = 'C'))
+print(gases._convervol(1000,'ml'))

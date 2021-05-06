@@ -4,6 +4,28 @@ import numpy as np
 
 # Esta función se utiliza para convertir los volumenes. 
 def _convervol(v, unidadesvol):
+    '''
+    ```_convervol(v, unidadesvol)```
+
+    Método auxiliar que convierte un valor de volumen de la unidad argumento a Litros.
+    Las unidades soportadas se encuentran en los docs.
+
+
+    Regresa un float.
+
+    Uso:
+
+    ```python
+    gases._convervol(1000,'ml')
+
+    ```
+    Regresa:
+
+    ```python
+    1.0
+    ```
+
+    '''
     if unidadesvol == 'ml': # Se convierte el volumen de mililitros a litros
         v /= 1000
     elif unidadesvol == 'L': # Se deja el volumen de litros
@@ -17,6 +39,27 @@ def _convervol(v, unidadesvol):
 
 # Esta función se utiliza para la conversión de presión
 def _converpres(p, unidadespres): 
+    '''
+    ```_converpres(p, unidadespres)```
+
+    Método auxiliar que convierte un valor de presión de la unidad argumento a atmósferas.
+    Las unidades soportadas se encuentran en los docs.
+
+    Regresa un float.
+
+    Uso:
+
+    ```python
+    gases._converpres(760,'mmhg')
+
+    ```
+    Regresa:
+
+    ```python
+    1.0
+    ```
+
+    '''
     if unidadespres == 'pa': # Se convierte la presión de pascales a atmósferas
         p /= 101, 300
 
@@ -29,8 +72,29 @@ def _converpres(p, unidadespres):
 
 # Esta función se utiliza para la conversión de temperaturas
 def _convertemp(t, unidadestemp): 
+    '''
+    ```_convertemp(t, unidadestemp)```
+
+    Método auxiliar que convierte un valor de temperatura de la unidad argumento a kelvin.
+    Las unidades soportadas se encuentran en los docs.
+
+    Regresa un float.
+
+    Uso:
+
+    ```python
+    gases._convertemp(0,'C')
+
+    ```
+    Regresa:
+
+    ```python
+    273.15
+    ```
+
+    '''
     if unidadestemp == 'C': # Se convierte la temperatura de celsius a Kelvin
-        t += 273
+        t += 273.15
     elif unidadestemp == 'F': # Se convierte la temperatura de Farenheit a Kelvin
         t = (((t - 32) * (5 / 9)) + 273)
     elif unidadestemp == 'k': # Se deja la temperatura en Kelvin
@@ -40,6 +104,9 @@ def _convertemp(t, unidadestemp):
 
 # Esta función sirve para hacer asignaciones de valores que se ocuparán posteriormente
 def _cumpleBoyle(p1,p2,v1,v2):
+    '''
+    Método auxiliar que indica si se cumple la ley 
+    '''
     p1v1 = p1 * v1
     p2v2 = p2 * v2
 
@@ -47,6 +114,9 @@ def _cumpleBoyle(p1,p2,v1,v2):
 
 # Esta función sirve para hacer asignaciones de valores que se ocuparán posteriormente
 def _cumpleLussac(p1,p2,t1,t2):
+    '''
+    Método auxiliar que indica si se cumple la ley 
+    '''
     p1_t1 = float(p1) / float(t1)
     p2_t2 = float(p2) / float(t2)
 
@@ -54,6 +124,9 @@ def _cumpleLussac(p1,p2,t1,t2):
 
 # Esta función sirve para hacer asignaciones de valores que se ocuparán posteriormente
 def _cumpleCharles(t1,t2,v1,v2):
+    '''
+    Método auxiliar que indica si se cumple la ley 
+    '''
     v1_t1 = float(v1) / float(t1)
     v2_t2 = float(v2) / float(t2)
 
@@ -61,6 +134,9 @@ def _cumpleCharles(t1,t2,v1,v2):
     
 # Esta función sirve para hacer asignaciones de valores que se ocuparán posteriormente
 def _cumpleComb(t1,t2,v1,v2,p1,p2):
+    '''
+    Método auxiliar que indica si se cumple la ley 
+    '''
     p1v1_t1 = (float(p1) * float(v1)) / float(t1)
     p2v2_t2 = (float(p2) * float(v2)) / float(t2)
 
@@ -68,6 +144,10 @@ def _cumpleComb(t1,t2,v1,v2,p1,p2):
 
 # Esta función sirve para asignar los resultados de funciones anteriores relacionado con Boyle [p1]
 def BoyleP1(v1,v2,p2, unidadesvol = 'L', unidadespres = 'atm'):
+    '''
+    Boyle: Presión inicial
+    Revisar docstring de BoyleP2 para información detallada.
+    '''
     v1 = _convervol(v1,unidadesvol) 
     v2 = _convervol(v2,unidadesvol)
     p2 = _converpres(p2,unidadespres)
@@ -194,6 +274,15 @@ def BoyleV2(v1,p1,p2, unidadesvol = 'L', unidadespres = 'atm'):
 
 # Esta función sirve para asginar los resultado de funciones anteriores relacionado con Lussac [p1]
 def LussacP1(t1,t2,p2, unidadespres = 'atm', unidadestemp = 'k'):
+    '''
+    ```LussacP1(t1,t2,p2, unidadespres = 'atm', unidadestemp = 'k')```
+
+    Toma como argumentos la temperatura inicial, temperatura final y presión  final, regresa un diccionario
+    que contiene la presión inicial en atmósferas y un booleano que indica si se cumple la ley o no.
+
+    Para mayor información y caso de uso similar, revisar docstring de ```LussacP2()```.
+
+    '''
     t1 = _convertemp(t1,unidadestemp)
     t1 = _convertemp(t1,unidadestemp)
     p2 = _converpres(p2,unidadespres)
@@ -209,6 +298,26 @@ def LussacP1(t1,t2,p2, unidadespres = 'atm', unidadestemp = 'k'):
 
 # Esta función sirve para asignar los resultados de funciones anteriores relacionado con Lussac [p2]
 def LussacP2(t1,t2,p1, unidadespres = 'atm', unidadestemp = 'k'):
+    '''
+    Ejemplo de uso de ```LussacP2(t1,t2,p1,unidadespres,unidadestemp)```
+
+    > La presión del aire en un matraz cerrado es de 460 mm de Hg a 45°C. ¿Cuál es la presión del gas si se calienta hasta 125°C y el volumen permanece constante.
+
+    ```python
+    from libs import gases
+
+    gases.LussacP2(45, 125, 460, unidadespres = 'mmhg', unidadestemp = 'C')
+
+    ```
+
+    Regresa:
+
+    ```python
+    {'p2': 0.757530619000331, 'CumpleLey': True}
+    ```
+
+    Recordemos que la unidad es atmósfera, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+    '''
     t1 = _convertemp(t1,unidadestemp)
     t2 = _convertemp(t2,unidadestemp)
     p1 = _converpres(p1,unidadespres)
@@ -224,6 +333,15 @@ def LussacP2(t1,t2,p1, unidadespres = 'atm', unidadestemp = 'k'):
 
 # Esta función sirve para asginar los resultados de funciones anteriores relacionado con Lussac [t1]
 def LussacT1(t2,p1,p2, unidadespres = 'atm', unidadestemp = 'k'):
+    '''
+    ```LussacT1(t2,p1,p2,unidadespres,unidadestemp)```
+
+    Toma como argumentos la temperatura final, temperatura inicial y presión final, regresa un diccionario
+    que contiene la temperatura inicial en Kelvin y un booleano que indica si se cumple la ley o no.
+
+    Para mayor información y caso de uso similar, revisar docstring de ```LussacT2()```.
+
+    '''
     t2 = _convertemp(t2,unidadestemp)
     p1 = _converpres(p1,unidadespres)
     p2 = _converpres(p2,unidadespres)
@@ -240,6 +358,27 @@ def LussacT1(t2,p1,p2, unidadespres = 'atm', unidadestemp = 'k'):
 
 # Esta función sirve para asignar los resultados de funciones anteriores relacionado con Lussac [t2]
 def LussacT2(t1,p1,p2, unidadespres = 'atm', unidadestemp = 'k'):
+    '''
+    Ejemplo de uso de ```LussacT2(t1,p1,p2,unidadespres,unidadestemp)```
+
+    > Cierto volumen de un gas se encuentra a una presión de 970 mmHg cuando su temperatura es de 25.0°C. ¿A qué temperatura deberá estar para que su presión sea 760 mmHg?
+
+    ```python
+    from libs import gases
+
+    gases.LussacT2(25, 970, 760, unidadespres = 'mmhg', unidadestemp = 'C')
+
+    ```
+
+    Regresa:
+
+    ```python
+    {'t2': 233.48453608247422, 'CumpleLey': True}
+    ```
+
+    Recordemos que la unidad es Kelvin, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+    '''
     t1 = _convertemp(t1,unidadestemp)
     p1 = _converpres(p1,unidadespres)
     p2 = _converpres(p2,unidadespres)
