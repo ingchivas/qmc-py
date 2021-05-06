@@ -1,6 +1,6 @@
 # quimpy
 
-## Miscellaneous chemistry package for Pyhton3
+## Miscellaneous chemistry package for Python3
 
 ### Paquete misceláneo de química para Python3
 
