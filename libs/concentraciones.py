@@ -112,5 +112,36 @@ def pl_gl(m_soluto, v_solucion, u_masa = 'g', u_volumen = 'L'):
     gramolitro = m_soluto/v_solucion
     return gramolitro
 
-def molaridad_msoluto():
-    pass
+def molaridad_msoluto(m_molecular,v, molaridad, u_volumen = 'L' ):
+    v = _convervol(v, u_volumen)
+    gr = molaridad * m_molecular * v
+    return gr
+
+def molaridad_mmolecular(m_soluto, v, molaridad, u_masa = 'g', u_volumen = 'L'):
+    v = _convervol(v, u_volumen)
+    m_soluto=_convermasa(m_soluto, u_masa)
+    Mm = m_soluto / (molaridad * v)
+
+    return Mm
+
+def molaridad_volumenM(moles, molaridad):
+    v = moles * molaridad
+    return v
+
+def molaridad_volumen(m_soluto, molaridad, m_molecular, u_masa = 'g'):
+    m_soluto=_convermasa(m_soluto, u_masa)
+
+    v = m_soluto/(m_molecular*molaridad)
+    return v
+
+def molaridad_moles(v, molaridad, u_volumen = 'L'):
+    v = _convervol(v, u_volumen)
+    moles = molaridad*v
+    return moles
+
+def moles_molaridadM(moles, v , u_volumen='L'):
+    v=_convervol(v, u_volumen)
+    molaridad = v*moles
+
+    return molaridad
+

@@ -12,6 +12,7 @@
 4. [Elementos](#elementos)
 5. [Materia](#materia)
 6. [Gases](#gases)
+7. [Concentraciones](#concentraciones)
 
 ## Descripción
 
@@ -40,7 +41,7 @@ El paquete se divide en los siguientes módulos:
 | elementos       | Contiene los elementos de la tabla periódica instanciados en la clase Elemento.                                  |
 | materia         | Contiene módulos para resolver problemas de UMA, de compuestos y elementos, incluyendo la UMA percentual.        |
 | gases           | Módulos para resolver problemas de Ley de Boyle, Ley de Lussac, Ley de Charles, Ley Combinada de los Gases,      |
-| concentraciones | Módulos para resolver problemas de concentración. [MASA,VOLUMEN,PESO,MOLARIDAD, NORMAL, MOLAL, FRACCIONMOL, PPM] |
+| concentraciones | Módulos para resolver problemas de concentración. [MASA,VOLUMEN,PESO_LITRO,MOLARIDAD, NORMAL, MOLAL, FRACCIONMOL, PPM] |
 | pH              | Módulos para resolver problemas de pH.                                                                           |
 
 ---
@@ -285,7 +286,7 @@ NOTA: **Los resultados siempre se darán en las unidades por defecto**
 | V1   ```BoyleV1({DP})```      | Volumen inicial  | ```v2,p1,p2,unidadesvol,unidadespres``` |
 | V2   ```BoyleV2({DP})```      | Volumen final    | ```v1,p1,p2,unidadesvol,unidadespres``` |
 
-Ejemplo de uso de ```BoyleP2(v1,v2,p1,unidadesvol,unidadespres)```
+#### Ejemplo de uso de ```BoyleP2(v1,v2,p1,unidadesvol,unidadespres)```
 
 > Un gas ocupa 1.5 litros a una presión de 2.5 atm. Si la temperatura permanece constante, ¿Cuál es la presión en mm de Hg, si se pasa a un recipiente de 3 litros?
 
@@ -307,7 +308,7 @@ Regresa:
 
 Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
-Ejemplo de uso de ```BoyleV1(v2,p1,p2,unidadesvol,unidadespres)```
+#### Ejemplo de uso de ```BoyleV1(v2,p1,p2,unidadesvol,unidadespres)```
 
 > Calcular el volumen de un gas a una temperatura constante al recibir una presión de 5 atm, si su volumen es de 3.4 litros a una presión de 2.5 atmósferas.
 
@@ -329,7 +330,7 @@ Regresa:
 
 Recordemos que la unidad es **litro**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
-Ejemplo de uso de ```BoyleV2(v1,p1,p2,unidadesvol,unidadespres)```
+#### Ejemplo de uso de ```BoyleV2(v1,p1,p2,unidadesvol,unidadespres)```
 
 > Una muestra de oxígeno ocupa 4.2 litros a 760 mmHg. ¿Cuál será el volumen del oxígeno a 415 mmHg, si la temperatura permanece constante?
 
@@ -362,7 +363,7 @@ Regresa:
 | T1   ```LussacT1({DP})```      | Temperatura inicial | ```t2,p1,p2,unidadespres,unidadestemp``` |
 | T2   ```LussacT2({DP})```      | Temperatura final   | ```t1,p1,p2,unidadespres,unidadestemp``` |
 
-Ejemplo de uso de ```LussacP2(t1,t2,p1,unidadespres,unidadestemp)```
+#### Ejemplo de uso de ```LussacP2(t1,t2,p1,unidadespres,unidadestemp)```
 
 > La presión del aire en un matraz cerrado es de 460 mm de Hg a 45°C. ¿Cuál es la presión del gas si se calienta hasta 125°C y el volumen permanece constante.
 
@@ -381,7 +382,7 @@ Regresa:
 
 Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
-Ejemplo de uso de ```LussacT2(t1,p1,p2,unidadespres,unidadestemp)```
+#### Ejemplo de uso de ```LussacT2(t1,p1,p2,unidadespres,unidadestemp)```
 
 > Cierto volumen de un gas se encuentra a una presión de 970 mmHg cuando su temperatura es de 25.0°C. ¿A qué temperatura deberá estar para que su presión sea 760 mmHg?
 
@@ -407,12 +408,12 @@ Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades cont
 
 | Parámetros para {DO} en Charles | Dato que obtiene    | Datos que necesita {DP}                  |
 |---------------------------------|---------------------|------------------------------------------|
-| V1   ```CharlesV1({DP})```      | Presión inicial     | ```t1,t2,v2,unidadesvol,unidadestemp```  |
-| V2   ```CharlesV2({DP})```      | Presión final       | ```t1,t2,v1,unidadesvol,unidadestemp```  |
-| T1   ```CharlesT1({DP})```      | Volumen inicial     | ```t2,v1,v2,unidadesvol,unidadestemp```  |
-| T2   ```CharlesT2({DP})```      | Volumen final       | ```t1,v1,v2,unidadesvol,unidadestemp```  |
+| V1   ```CharlesV1({DP})```      | Volumen inicial     | ```t1,t2,v2,unidadesvol,unidadestemp```  |
+| V2   ```CharlesV2({DP})```      | Volumen final       | ```t1,t2,v1,unidadesvol,unidadestemp```  |
+| T1   ```CharlesT1({DP})```      | Temperatura inicial | ```t2,v1,v2,unidadesvol,unidadestemp```  |
+| T2   ```CharlesT2({DP})```      | Temperatura final   | ```t1,v1,v2,unidadesvol,unidadestemp```  |
 
-Ejemplo de uso de ```CharlesV2(t1,t2,v1,unidadesvol,unidadestemp)```
+#### Ejemplo de uso de ```CharlesV2(t1,t2,v1,unidadesvol,unidadestemp)```
 
 > Se tiene un gas a una presión constante de 560 mm de Hg, el gas ocupa un volumen de 23 cm³ a una temperatura que está en 69°C . ¿Qué volumen ocupará el gas a una temperatura de 13°C?
 
@@ -431,7 +432,7 @@ Obtenemos:
 
 Recordemos que la unidad es **Litros**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
-Ejemplo de uso de ```CharlesT1(t2,v1,v2,unidadesvol,unidadestemp)```
+#### Ejemplo de uso de ```CharlesT1(t2,v1,v2,unidadesvol,unidadestemp)```
 
 > Calcular la temperatura absoluta a la cual se encuentra un gas que ocupa un volumen de 0.4 litros a una presión de una atmósfera, si a una temperatura de 45°C ocupa un volumen de 1.2 litros a la misma presión.
 
@@ -450,7 +451,7 @@ Obtenemos:
 
 Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
 
-Ejemplo de uso de ```CharlesT2(t1,v1,v2,unidadesvol,unidadestemp)```
+#### Ejemplo de uso de ```CharlesT2(t1,v1,v2,unidadesvol,unidadestemp)```
 
 > Una masa determinada de nitrógeno gaseoso ocupa un volumen de 4 litros a una temperatura de 31°C y a una presión de una atmósfera, calcular su temperatura absoluta si el volumen que ocupa es de 1.2 litros a la misma presión
 
@@ -468,3 +469,141 @@ Obtenemos:
 ```
 
 Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+### Ley combinada de los gases
+
+> En esta ley ninguna variable permanece constante.
+> $$\frac{P_1V_1}{T_1}=\frac{P_2V_2}{T_2}
+
+| Parámetros para {DO} en LeyComb | Dato que obtiene    | Datos que necesita {DP}                                     |
+|---------------------------------|---------------------|-------------------------------------------------------------|
+| V1   ```LeyCombV1({DP})```      | Volumen inicial     | ```t1,t2,v2,p1,p2,unidadesvol,unidadestemp,unidadespres```  |
+| V2   ```LeyCombV2({DP})```      | Volumen final       | ```t1,t2,v1,p1,p2,unidadesvol,unidadestemp,unidadespres```  |
+| T1   ```LeyCombT1({DP})```      | Temperatura inicial | ```t2,v1,v2,p1,p2,unidadesvol,unidadestemp,unidadespres```  |
+| T2   ```LeyCombT2({DP})```      | Temperatura final   | ```t1,v1,v2,p1,p2,unidadesvol,unidadestemp,unidadespres```  |
+| P1   ```LeyCombP1({DP})```      | Presión inicial     | ```t1,t2,v1,v2,p2,unidadesvol,unidadestemp,unidadespres```  |
+| P2   ```LeyCombP2({DP})```      | Presión final       | ```t1,t2,v1,v2,p1,unidadesvol,unidadestemp,unidadespres```  |
+
+#### Ejemplo de uso de ```LeyCombP2(t1,t2,v1,v2,p1,unidadesvol,unidadestemp,unidadespres)```
+
+> Los neumáticos de un coche deben estar a una presión de 1,8 atm,
+> a 20 ºC. Con el movimiento se calientan hasta 50 ºC, pasando su volumen de 50 a 50,5 litros.
+> ¿Cuál será la presión del neumático tras la marcha?
+
+```python
+from libs import gases
+
+gases.LeyCombP2(20,50,50,50.5,1.8, unidadestemp = 'C')
+```
+
+Devuelve:
+
+```python
+{'p2': 1.9645604335292814, 'CumpleLey': False}
+```
+
+Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+#### Ejemplo de uso de ```LeyCombV2(t1,t2,v1,p1,p2,unidadesvol,unidadestemp,unidadespres)```
+
+> Una muestra de neón ocupa 105 L a 27 °C bajo una presión de 985mmhg . ¿Cuál es el volumen que debería ocupar el gas
+> a temperatura y y presión estándar (0°C - 760mmhg).
+
+```python
+from libs import gases
+
+gases.LeyCombV2(27,0,105,985,760, unidadestemp = 'C', unidadespres = 'mmhg')
+```
+
+Devuelve:
+
+```python
+{'v2': 123.84394973565848, 'CumpleLey': False}
+```
+
+Recordemos que la unidad es **litro**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+#### Ejemplo de uso de ```t1,v1,v2,p1,p2,unidadesvol,unidadestemp,unidadespres```
+
+> Una muestra de 4L de nitrógeno se recoge a 1.5 atm y 288 K. Si la presión se
+> incrementa a 2.5 atm y el volumen se reduce a 2L, ¿qué temperatura posee el
+> nitrógeno?
+
+```python
+gases.LeyCombT2(288,4,2,1.5,2.5)
+```
+
+Devuelve:
+
+```python
+{'t2': 240.0, 'CumpleLey': True}
+```
+
+Recordemos que la unidad es **kelvin**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+### Métodos encapsulados [gases]
+
+| Métodos                            | Utilidad                                                                                       |
+|------------------------------------|------------------------------------------------------------------------------------------------|
+| ```_convervol(v, unidadesvol)```   | Método auxiliar que convierte un valor de volumen de la unidad argumento a ```Litros```.       |
+| ```_converpres(p, unidadespres)``` | Método auxiliar que convierte un valor de presión de la unidad argumento a ```atmósferas```.   |
+| ```_convertemp(t, unidadestemp)``` | Método auxiliar que convierte un valor de temperatura de la unidad argumento a ```kelvin```.   |
+| ```_cumple{LEY}```({ADP})          | Método auxiliar que indica si se cumple la ley en cuestión. Toma todos los datos del problema. |
+
+#### ```_convervol(v, unidadesvol)```
+
+Método auxiliar que convierte un valor de volumen de la unidad argumento a Litros.
+Regresa un float.
+
+Uso:
+
+```python
+gases._convervol(1000,'ml')
+```
+  
+Regresa:
+
+```python
+1.0
+```
+
+#### ```_converpres(p, unidadespres)```
+
+Método auxiliar que convierte un valor de presión de la unidad argumento a atmósferas.
+
+Regresa un float.
+Uso:
+
+```python
+gases._converpres(760,'mmhg')
+
+```
+
+Regresa:
+
+```python
+1.0
+```
+
+#### ```_convertemp(t, unidadestemp)```
+
+Método auxiliar que convierte un valor de temperatura de la unidad argumento a kelvin.
+
+Regresa un float.
+
+Uso:
+
+```python
+gases._convertemp(0,'C')
+
+```
+
+Regresa:
+
+```python
+273.15
+```
+
+---
+
+## Concentraciones
