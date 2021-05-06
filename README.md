@@ -244,14 +244,18 @@ Regresa:
 |------------------------------|--------------------------------------------------------------------------------------------------------|
 | ```_umaelemento(elemento)``` | Checa la UMA de un elemento en el contenedor.                                                          |
 | ```_cosplit(compuesto)```    | Parser de ecuaciones químicas basado en regex.                                                         |
-| ```_intconv(num)```               | Intenta convertir números a enteros. Auxiliar en el algoritmo de reconocimiento de fórmulas químicas. |
+| ```_intconv(num)```          | Intenta convertir números a enteros. Auxiliar en el algoritmo de reconocimiento de fórmulas químicas.  |
 
 ---
 
 ## Gases
 
-| Métodos                        | Utilidad                                                                               |
-|--------------------------------|----------------------------------------------------------------------------------------|
-| ```Boyle{DATO A OBTENER}({DATOS QUE SE TIENEN} unidadesvol = 'L', unidadespres = 'atm')```  | Obtiene el valor faltante del problema de Boyle. Regresa un float.                           |
-| ```Lussac{DATO A OBTENER}({DATOS QUE SE TIENEN} unidadesvol = 'L', unidadespres = 'atm')``` | Obtiene el valor faltante del problema de Lussac. Regresa un float.             |
+| Métodos                 | Utilidad                                                                                               |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| ```Boyle{DO}({DP})```   | Obtiene el dato faltante en un problema de gases de la Ley de Boyle.                                   |
+| ```Charles{DO}({DP})``` | Obtiene el dato faltante en un problema de gases de la Ley de Charles.                                 |
+| ```Llusac{DO}({DP})```  | Obtiene el dato faltante en un problema de gases de la Ley de Llusac.                                  |
+| ```Combinada{{DO}}```   | Obtiene el dato faltante en un problema de gases de la Ley Combinada de los Gases.                     |
+
+Donde {DO} es nuestro dato a obtener en mayúscula y {DP} son los datos del problema.
 

@@ -210,7 +210,7 @@ def CharlesV1(t1,t2,v2, unidadesvol = 'L', unidadestemp = 'k'):
 def CharlesV2(t1,t2,v1, unidadesvol = 'L', unidadestemp = 'k'):
     t1 = _convertemp(t1,unidadestemp)
     t2 = _convertemp(t2,unidadestemp)
-    v1 = _convervol(v2, unidadesvol)
+    v1 = _convervol(v1, unidadesvol)
 
     v2 = (v1 * t2) / t1
 
@@ -238,7 +238,7 @@ def CharlesT1(t2,v1,v2, unidadesvol = 'L', unidadestemp = 'k'):
     return resultado # Se regresa el resultado
 
 # Esta función sirve para asignar los resultados de funciones anteriores relacionado con Charles [t2]
-def CharlesT2(t1,t2,v2, unidadesvol = 'L', unidadestemp = 'k'):
+def CharlesT2(t1,v1,v2, unidadesvol = 'L', unidadestemp = 'k'):
     t1 = _convertemp(t1,unidadestemp)
     v1 = _convervol(v1,unidadesvol)
     v2 = _convervol(v2, unidadesvol)
@@ -337,7 +337,7 @@ def LeyCombT1(t2,v1,v2,p1,p2, unidadesvol = 'L', unidadestemp = 'k', unidadespre
     return resultado # Se regresa el resultado
 
 # Esta función sirve para asignar los resultados de funciones anteriores relacionado con LeyComb [t2]
-def LeyCombT2(t2,v1,v2,p1,p2, unidadesvol = 'L', unidadestemp = 'k', unidadespres = 'atm'):
+def LeyCombT2(t1,v1,v2,p1,p2, unidadesvol = 'L', unidadestemp = 'k', unidadespres = 'atm'):
     t1 = _convertemp(t1,unidadestemp)
     v1 = _convervol(v1, unidadesvol)
     v2 = _convervol(v2, unidadesvol)
