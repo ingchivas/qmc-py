@@ -449,3 +449,22 @@ Obtenemos:
 ```
 
 Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+Ejemplo de uso de ```CharlesT2(t1,v1,v2,unidadesvol,unidadestemp)```
+
+> Una masa determinada de nitrógeno gaseoso ocupa un volumen de 4 litros a una temperatura de 31°C y a una presión de una atmósfera, calcular su temperatura absoluta si el volumen que ocupa es de 1.2 litros a la misma presión
+
+```python
+from libs import gases
+
+gases.CharlesT2(31,4,1.2, unidadestemp = 'C')
+
+```
+
+Obtenemos:
+
+```python
+{'t2': 91.2, 'CumpleLey': True}
+```
+
+Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
