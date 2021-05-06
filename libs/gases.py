@@ -210,7 +210,7 @@ def LussacP1(t1,t2,p2, unidadespres = 'atm', unidadestemp = 'k'):
 # Esta función sirve para asignar los resultados de funciones anteriores relacionado con Lussac [p2]
 def LussacP2(t1,t2,p1, unidadespres = 'atm', unidadestemp = 'k'):
     t1 = _convertemp(t1,unidadestemp)
-    t1 = _convertemp(t1,unidadestemp)
+    t2 = _convertemp(t2,unidadestemp)
     p1 = _converpres(p1,unidadespres)
 
     p2 = (p1 * t2) / t1

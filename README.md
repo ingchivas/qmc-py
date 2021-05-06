@@ -275,7 +275,8 @@ NOTA: **Los resultados siempre se darán en las unidades por defecto**
 
 ### Boyle
 
-> La ley de Boyle situa un gas a temperatura constante, pero un cambio en la presion-volumen. $$P_1V_1=P_2V_2$$.
+> La ley de Boyle situa un gas a temperatura constante, pero un cambio en la presion-volumen.
+> $$P_1V_1=P_2V_2$$
 
 | Parámetros para {DO} en Boyle | Dato que obtiene | Datos que necesita {DP}                 |
 |-------------------------------|------------------|-----------------------------------------|
@@ -326,6 +327,8 @@ Regresa:
 {'v1': 1.7, 'CumpleLey': True}
 ```
 
+Recordemos que la unidad es litro, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
 Ejemplo de uso de ```BoyleV2(v1,p1,p2,unidadesvol,unidadespres)```
 
 > Una muestra de oxígeno ocupa 4.2 litros a 760 mmHg. ¿Cuál será el volumen del oxígeno a 415 mmHg, si la temperatura permanece constante?
@@ -349,11 +352,50 @@ Regresa:
 
 ### Llusac
 
-> La ley de Lussac situa un gas a volumen constante, pero un cambio en la presion-temperatura. $$\frac{P_1}{T_1} = \frac{P_2}{T_2}$$
+> La ley de Lussac situa un gas a volumen constante, pero un cambio en la presion-temperatura.
+> $$\frac{P_1}{T_1} = \frac{P_2}{T_2}$$
 
-| Parámetros para {DO} en Lussac | Dato que obtiene    | Datos que necesita {DP}                 |
-|--------------------------------|---------------------|-----------------------------------------|
-| P1   ```LussacP1({DP})```      | Presión inicial     | ```v1,v2,p2,unidadesvol,unidadespres``` |
-| P2   ```LussacP2({DP})```      | Presión final       | ```v1,v2,p1,unidadesvol,unidadespres``` |
-| T1   ```LussacT1({DP})```      | Temperatura inicial | ```v2,p1,p2,unidadesvol,unidadespres``` |
-| T2   ```LussacT2({DP})```      | Temperatura final   | ```v1,p1,p2,unidadesvol,unidadespres``` |
+| Parámetros para {DO} en Lussac | Dato que obtiene    | Datos que necesita {DP}                  |
+|--------------------------------|---------------------|------------------------------------------|
+| P1   ```LussacP1({DP})```      | Presión inicial     | ```t1,t2,p2,unidadespres,unidadestemp``` |
+| P2   ```LussacP2({DP})```      | Presión final       | ```t1,t2,p1,unidadespres,unidadestemp``` |
+| T1   ```LussacT1({DP})```      | Temperatura inicial | ```t2,p1,p2,unidadespres,unidadestemp``` |
+| T2   ```LussacT2({DP})```      | Temperatura final   | ```t1,p1,p2,unidadespres,unidadestemp``` |
+
+Ejemplo de uso de ```LussacP2(t1,t2,p1,unidadespres,unidadestemp)```
+
+> La presión del aire en un matraz cerrado es de 460 mm de Hg a 45°C. ¿Cuál es la presión del gas si se calienta hasta 125°C y el volumen permanece constante.
+
+```python
+from libs import gases
+
+gases.LussacP2(45, 125, 460, unidadespres = 'mmhg', unidadestemp = 'C')
+
+```
+
+Regresa:
+
+```python
+{'p2': 0.757530619000331, 'CumpleLey': True}
+```
+
+Recordemos que la unidad es atmósfera, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
+
+Ejemplo de uso de ```LussacT2(t1,p1,p2,unidadespres,unidadestemp)```
+
+> Cierto volumen de un gas se encuentra a una presión de 970 mmHg cuando su temperatura es de 25.0°C. ¿A qué temperatura deberá estar para que su presión sea 760 mmHg?
+
+```python
+from libs import gases
+
+gases.LussacT2(25, 970, 760, unidadespres = 'mmhg', unidadestemp = 'C')
+
+```
+
+Regresa:
+
+```python
+{'t2': 233.48453608247422, 'CumpleLey': True}
+```
+
+Recordemos que la unidad es Kelvin, siempre se utilizarán las unidades contenidas en la tabla de [unidades por defecto.](#unidades-por-defecto)
