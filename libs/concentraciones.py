@@ -52,7 +52,7 @@ def masa_msolvente(p_masa,m_soluto, u_masa = 'g'):
 
     return m_solvente
 
-def masa_pmasa(m_soluto,m_solucion, u_masa = 'g'):#Si sabemos m_solucion
+def masa_pmasaS(m_soluto,m_solucion, u_masa = 'g'):#Si sabemos m_solucion
     m_solucion = _convermasa(m_solucion, u_masa)
     m_soluto = _convermasa(m_soluto, u_masa)
 
@@ -60,7 +60,7 @@ def masa_pmasa(m_soluto,m_solucion, u_masa = 'g'):#Si sabemos m_solucion
     
     return porcenmasa
 
-def masa_pmasas(m_soluto, m_solvente, u_masa = 'g'):
+def masa_pmasa(m_soluto, m_solvente, u_masa = 'g'):
     m_soluto = _convermasa(m_soluto,u_masa)
     m_solvente = _convermasa(m_solvente,u_masa)
 

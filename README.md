@@ -12,7 +12,8 @@
 4. [Elementos](#elementos)
 5. [Materia](#materia)
 6. [Gases](#gases)
-7. [Concentraciones](#concentraciones)
+7. [pH](#ph)
+8. [Concentraciones](#concentraciones)
 
 ## Descripción
 
@@ -20,7 +21,7 @@ Este paquete contiene diferentes módulos orientados a resolver diferentes probl
 
 ---
 
-### Dependencias
+## Dependencias
 
 - math
 - re
@@ -41,8 +42,8 @@ El paquete se divide en los siguientes módulos:
 | elementos       | Contiene los elementos de la tabla periódica instanciados en la clase Elemento.                                  |
 | materia         | Contiene módulos para resolver problemas de UMA, de compuestos y elementos, incluyendo la UMA percentual.        |
 | gases           | Módulos para resolver problemas de Ley de Boyle, Ley de Lussac, Ley de Charles, Ley Combinada de los Gases.      |
-| concentraciones | Módulos para resolver problemas de concentración. [MASA,VOLUMEN,PESO_LITRO,MOLARIDAD, NORMAL, MOLAL, FRACCIONMOL, PPM] |
 | pH              | Módulos para resolver problemas de pH.                                                                           |
+| concentraciones | Módulos para resolver problemas de concentración. [MASA,VOLUMEN,PESO_LITRO,MOLARIDAD, NORMAL, MOLAL, FRACCIONMOL, PPM] |
 
 ---
 
@@ -548,7 +549,7 @@ Recordemos que la unidad es **kelvin**, siempre se utilizarán las unidades cont
 | ```_convervol(v, unidadesvol)```   | Método auxiliar que convierte un valor de volumen de la unidad argumento a ```Litros```.       |
 | ```_converpres(p, unidadespres)``` | Método auxiliar que convierte un valor de presión de la unidad argumento a ```atmósferas```.   |
 | ```_convertemp(t, unidadestemp)``` | Método auxiliar que convierte un valor de temperatura de la unidad argumento a ```kelvin```.   |
-| ```_cumple{LEY}```({ADP})          | Método auxiliar que indica si se cumple la ley en cuestión. Toma todos los datos del problema. |
+| ```_cumple{LEY}({ADP})```          | Método auxiliar que indica si se cumple la ley en cuestión. Toma todos los datos del problema. |
 
 #### ```_convervol(v, unidadesvol)```
 
@@ -606,18 +607,14 @@ Regresa:
 
 ---
 
-## Concentraciones
-
 ## pH
 
-| Métodos                                            | Utilidad                                                                                                |
-|----------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| ```_tipoPH(valorpH, valorpOH, valorH, valorOH)```  | Método encapsulado que comprueba el tipo de solución. Regresa un string.                                |
-| ```_getConcentración(valorH, valorOH)```           | Método encapsulado que calcula la concentración de una solución. Regresa un int                         |
-| ```get_pH(valorH)```                               | Método que, al recibir un valor en específico (pH), calcula los restantes (pOH, H, OH). Regresa un dict |
-| ```get_pOH(valorOH)```                             | Método que mediante la obtención de el valor de pOH, calcula los demás (pH, H, OH). Regresa un dict     |
-| ```get_H(valorH)```                                | Método que se encarga de calcular valores de (pH, pOH, OH) al obtener el valor de H. Regresa un dict    |
-| ```get_OH(valorOH)```                              | Método que calcula los valores de (pH, pOH, H) al tener el valor OH. Regresa un dict                    |  
+| Métodos                                            | Utilidad                                                                                                 |
+|----------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| ```get_pH(valorH)```                               | Método que, al recibir un valor en específico (pH), calcula los restantes (pOH, H, OH). Regresa un dict. |
+| ```get_pOH(valorOH)```                             | Método que mediante la obtención de el valor de pOH, calcula los demás (pH, H, OH). Regresa un dict.     |
+| ```get_H(valorH)```                                | Método que se encarga de calcular valores de (pH, pOH, OH) al obtener el valor de H. Regresa un dict.    |
+| ```get_OH(valorOH)```                              | Método que calcula los valores de (pH, pOH, H) al tener el valor OH. Regresa un dict.                    |  
 
 ### _tipoPH(valorpH, valorpOH, valorH, valorOH)
 
@@ -731,4 +728,103 @@ Regresa:
 
 ```python
 {'pH':7,'pOH':7,'H+':1e-7,'OH-':1e-7, 'Tipo':'neutra', 'Concentración':1e-14}
+```
+
+### Métodos encapsulados [pH]
+
+| Métodos                                            | Utilidad                                                                          |
+|----------------------------------------------------|-----------------------------------------------------------------------------------|
+| ```_tipoPH(valorpH, valorpOH, valorH, valorOH)```  | Método encapsulado que comprueba el tipo de solución. Regresa un string.          |
+| ```_getConcentración(valorH, valorOH)```           | Método encapsulado que calcula la concentración de una solución. Regresa un int.  |
+
+---
+
+## Concentraciones
+
+| Métodos                   | Utilidad                                                                    |
+|---------------------------|-----------------------------------------------------------------------------|
+| ```masa{DO}({DP})```      | Obtiene el dato faltante en un problema de concentración de masa.           |
+| ```vol{DO}({DP})```       | Obtiene el dato faltante en un problema de concentración de volumen.        |
+| ```pl{DO}({DP})```        | Obtiene el dato faltante en un problema de concentración peso-litro.        |
+| ```normal{DO}({DP})```    | Obtiene el dato faltante en un problema de concentración normal.            |
+| ```molaridad{DO}({DP})``` | Obtiene el dato faltante en un problema de concentración molaridad.         |
+| ```frac_molal(*c)```      | Obtiene el dato faltante en un problema de concentración fracción molal.    |
+| ```ppm{{DO}}```           | Obtiene el dato faltante en un problema de concentración partes por millón. |
+
+### Unidades por defecto [Concentraciones]
+
+| Métrica     | Unidad por defecto    | Unidades alternativas disponibles |
+|-------------|-----------------------|-----------------------------------|
+| Volumen     | ```"L"``` Litro       | ```"ml","cm3","m3"```             |
+| Masa        | ```"g"``` Gramo       | ```"kg","mg"```                   |
+
+NOTA: En ppm, el valor de la unidad de masa por defecto según la fórmula debe ser **mg**.
+Igualmente para la concentración molal la unidad defaul de la masa del solvente es **kg**
+
+#### Concentración porciento masa
+
+| Parámetros para {DO} en masa   | Dato que obtiene | Datos que necesita {DP}            |
+|--------------------------------|------------------|------------------------------------|
+| ```masa_masasolucion({DP})```  | Masa solución    | ```m_soluto, m_solvente, u_masa``` |
+| ```masa_masasolucionp({DP})``` | Masa solución    | ```p_masa,m_soluto,u_masa```       |
+| ```masa_msoluto({DP})```       | Masa soluto      | ```p_masa, m_solucion,u_masa```    |
+| ```masa_msolvente({DP})```     | Masa solvente    | ```p_masa,m_soluto,u_masa```       |
+| ```masa_pmasaS({DP})```        | %masa            | ```m_soluto,m_solucion,u_masa```   |
+| ```masa_pmasa({DP})```         | %masa            | ```m_soluto,m_solvente,u_masa```   |
+
+Ejemplo para ```masa_msoluto(p_masa, m_solucion, u_masa = 'g')```
+
+> Algunos refrescos contienen 11% en masa de azúcar, determinar cuántos
+> gramos contendrá una botella de refresco de coca- cola con 600 gramos de refresco.
+
+```python
+from libs import concentraciones
+
+concentraciones.masa_msoluto(11, 600)
+
+```
+
+Regresa
+
+```python
+66.0
+```
+
+La unidad es **gramos** según la tabla de [unidades por defecto.](#unidades-por-defecto-concentraciones)
+
+Ejemplo para ```masa_pmasaS(m_soluto, m_solucion, u_masa = 'g')```
+
+> Determinar el porciento en masa de un suero que contiene 45 gramos de sal en
+> 225 gramos de disolución.
+
+```python
+from libs import concentraciones
+
+concentraciones.masa_pmasa(45,225)
+
+```
+
+Regresa
+
+```python
+20.0
+```
+
+Ejemplo para ```masa_pmasa(m_soluto, m_solvente, u_masa = 'g')```
+
+> Un acuario debe mantener la concentración de sal similar a la del agua de mar,
+> esto es, 1.8 gramos de sal disueltos en 50 gramos de agua.
+> ¿Cuál es el porcentaje en masa de la sal en la disolución?
+
+```python
+from libs import concentraciones
+
+concentraciones.masa_pmasa(1.8,50)
+
+```
+
+Regresa
+
+```python
+3.6000000000000005
 ```
