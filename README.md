@@ -804,7 +804,7 @@ concentraciones.masa_pmasa(45,225)
 
 ```
 
-Regresa
+Regresa:
 
 ```python
 20.0
@@ -823,7 +823,7 @@ concentraciones.masa_pmasa(1.8,50)
 
 ```
 
-Regresa
+Regresa:
 
 ```python
 3.6000000000000005
