@@ -2,10 +2,18 @@ import numpy as np
 from .gases import _convervol
 
 def _getpeq(m_molecular, carga):
+    '''
+    Método auxiliar que obtiene el peso equivalente
+    Regresa un float
+    '''
     peso_eq = m_molecular / carga
     return peso_eq
 
 def _convermasa(masa, u_masa = 'g', u_masaout = 'g'):
+    '''
+    Convertidor de unidades de masa.
+    Regresa un float.
+    '''
     if u_masa == 'g' and u_masaout == 'g':
         pass
     elif u_masa != 'g' and u_masaout == 'mg':
@@ -15,6 +23,10 @@ def _convermasa(masa, u_masa = 'g', u_masaout = 'g'):
     return masa
 
 def _convermasaKG(masa, u_masa):
+    '''
+    DEPRECATED: Convertidor de masa a KG.
+    Regresa un float.
+    '''
     if u_masa == 'g':
         masa /= 1000
     elif u_masa == 'mg':
@@ -25,6 +37,10 @@ def _convermasaKG(masa, u_masa):
     return masa
 
 def masa_masasolucion(m_soluto, m_solvente, u_masa = 'g'):
+    '''
+    Concentración %masa, obtiene la masa de la solución a partir de soluto y solvente.
+    Regresa un float.
+    '''
     m_soluto = _convermasa(m_soluto,u_masa)
     m_solvente = _convermasa(m_solvente,u_masa)
 
@@ -33,12 +49,20 @@ def masa_masasolucion(m_soluto, m_solvente, u_masa = 'g'):
     return m_solucion
 
 def masa_masasolucionp(p_masa,m_soluto,u_masa='g'):
+    '''
+    Concentración %masa, obtiene la masa de la solución a partir de soluto y %masa.
+    Regresa un float.
+    '''
     m_soluto = _convermasa(m_soluto,u_masa)
     m_solucion = (m_soluto / p_masa) * 100
 
     return m_solucion
 
 def masa_msoluto(p_masa, m_solucion,u_masa='g'):
+    '''
+    Concentración %masa, obtiene la masa del soluto a partir de %masa y la masa de la solución.
+    Regresa un float.
+    '''
     m_solucion = _convermasa(m_solucion,u_masa)
 
     msoluto = (m_solucion * p_masa) / 100
@@ -46,6 +70,10 @@ def masa_msoluto(p_masa, m_solucion,u_masa='g'):
     return msoluto
 
 def masa_msolvente(p_masa,m_soluto, u_masa = 'g'):
+    '''
+    Concentración %masa, obtiene la masa del solvente a partir de y %masa y soluto .
+    Regresa un float.
+    '''
     m_soluto = _convermasa(m_soluto, u_masa)
 
     m_solvente = ((m_soluto * 100) - (p_masa * m_soluto)) / p_masa
@@ -53,6 +81,10 @@ def masa_msolvente(p_masa,m_soluto, u_masa = 'g'):
     return m_solvente
 
 def masa_pmasaS(m_soluto,m_solucion, u_masa = 'g'):#Si sabemos m_solucion
+    '''
+    Concentración %masa, obtiene la %masa si sabemos masa del soluto y solución .
+    Regresa un float.
+    '''
     m_solucion = _convermasa(m_solucion, u_masa)
     m_soluto = _convermasa(m_soluto, u_masa)
 
@@ -61,6 +93,10 @@ def masa_pmasaS(m_soluto,m_solucion, u_masa = 'g'):#Si sabemos m_solucion
     return porcenmasa
 
 def masa_pmasa(m_soluto, m_solvente, u_masa = 'g'):
+    '''
+    Concentración %masa, obtiene la %masa si sabemos masa del soluto y solvente .
+    Regresa un float.
+    '''
     m_soluto = _convermasa(m_soluto,u_masa)
     m_solvente = _convermasa(m_solvente,u_masa)
 
