@@ -18,7 +18,6 @@
 
 ![IUP](https://i.imgur.com/1ZrTdQ3.png)
 
-
 ## Tabla de contenidos
 
 1. [Descripción](#descripción)
