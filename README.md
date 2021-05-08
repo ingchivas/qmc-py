@@ -271,7 +271,7 @@ Regresa:
 | ```Boyle{DO}({DP})```   | Obtiene el dato faltante en un problema de gases de la Ley de Boyle.                                   |
 | ```Llusac{DO}({DP})```  | Obtiene el dato faltante en un problema de gases de la Ley de Llusac.                                  |
 | ```Charles{DO}({DP})``` | Obtiene el dato faltante en un problema de gases de la Ley de Charles.                                 |
-| ```Combinada{{DO}}```   | Obtiene el dato faltante en un problema de gases de la Ley Combinada de los Gases.                     |
+| ```Combinada{DO}({DP})```   | Obtiene el dato faltante en un problema de gases de la Ley Combinada de los Gases.                     |
 
 Donde {DO} es nuestro dato a obtener en mayúscula y {DP} son los datos del problema.
 
