@@ -828,3 +828,44 @@ Regresa:
 ```python
 3.6000000000000005
 ```
+
+#### Concentración %volumen
+
+| Parámetros para {DO} en %vol | Dato que obtiene    | Datos que necesita {DP}              |
+|------------------------------|---------------------|--------------------------------------|
+| ```vol_vsolucion({DP})```    | Volumen solución    | ```v_soluto,v_solvente,u_volumen```  |
+| ```vol_vsolucionP({DP})```   | Volumen solución    | ```v_soluto,p_volumen,u_volumen```   |
+| ```vol_vsoluto({DP})```      | Volumen soluto      | ```v_solucion,p_volumen,u_volumen``` |
+| ```vol_vsolvente({DP})```    | Volumen solvente    | ```v_soluto,p_volumen,u_volumen```   |
+| ```vol_pvolumenS({DP})```    | %volumen            | ```v_solucion,v_soluto,u_volumen```  |
+| ```vol_pvolumen({DP})```     | %volumen            | ```v_soluto,v_solvente,u_volumen```  |
+
+#### Concentración Peso-Litro
+
+| Parámetros para {DO} en pl | Dato que obtiene    | Datos que necesita {DP}              |
+|----------------------------|---------------------|--------------------------------------|
+| ```pl_msoluto({DP})```     | Masa soluto         | ```v_soluto,v_solvente,u_volumen```  |
+| ```pl_litros({DP})```      | Volumen solución    | ```v_soluto,p_volumen,u_volumen```   |
+| ```pl_gl({DP})```          | Conc. Gramo/Litro   | ```v_solucion,p_volumen,u_volumen``` |
+
+#### Concentración molaridad
+
+| Parámetros para {DO} en molaridad | Dato que obtiene    | Datos que necesita {DP}         |
+|------------------------------|---------------------|--------------------------------------|
+| ```molaridad_msoluto({DP})```    | Masa soluto    | ```m_molecular,v,molaridad,u_volumen```  |
+| ```molaridad_mmolecular({DP})``` | Masa molecular | ```m_soluto,v,molaridad, u_masa```   |
+| ```molaridad_volumenM({DP})```   | Volumen        | ```moles,molaridad``` |
+| ```molaridad_volumen({DP})```    | Volumen        | ```m_soluto,molaridad,m_molecular,u_masa``` |
+| ```molaridad_moles({DP})```      | moles          | ```v,molaridad,u_volumen```  |
+| ```molaridad_molesM({DP})```     | moles          | ```moles,v,u_volumen```  |
+
+#### Concentración normal
+
+| Parámetros para {DO} en %vol | Dato que obtiene    | Datos que necesita {DP}              |
+|------------------------------|---------------------|--------------------------------------|
+| ```vol_vsolucion({DP})```    | Volumen solución    | ```v_soluto,v_solvente,u_volumen```  |
+| ```vol_vsolucionP({DP})```   | Volumen solución    | ```v_soluto,p_volumen,u_volumen```   |
+| ```vol_vsoluto({DP})```      | Volumen soluto      | ```v_solucion,p_volumen,u_volumen``` |
+| ```vol_vsolvente({DP})```    | Volumen solvente    | ```v_soluto,p_volumen,u_volumen```   |
+| ```vol_pvolumenS({DP})```    | %volumen            | ```v_solucion,v_soluto,u_volumen```  |
+| ```vol_pvolumen({DP})```     | %volumen            | ```v_soluto,v_solvente,u_volumen```  |

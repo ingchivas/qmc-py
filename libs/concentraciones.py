@@ -93,7 +93,7 @@ def vol_vsolvente(v_soluto,p_volumen, u_volumen = 'L'):
 
     return v_solvente
 
-def vol_pvolumen(v_solucion, v_soluto, u_volumen = 'L'):
+def vol_pvolumenS(v_solucion, v_soluto, u_volumen = 'L'):
     v_soluto = _convervol(v_soluto,u_volumen)
     v_solucion = _convervol(v_solucion,u_volumen)
 
@@ -115,8 +115,8 @@ def pl_msoluto(c_pesolitro, v_solucion, u_volumen = 'L'):
 def pl_litros(m_soluto, c_pesolitro, u_masa = 'g'):
     m_soluto = _convermasa(m_soluto, u_masa)
 
-    l = m_soluto / c_pesolitro
-    return l
+    l_solucion = m_soluto / c_pesolitro
+    return l_solucion
 
 def pl_gl(m_soluto, v_solucion, u_masa = 'g', u_volumen = 'L'):
     v_solucion = _convervol(v_solucion, u_volumen)
