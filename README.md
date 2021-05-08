@@ -45,6 +45,13 @@ Para el InstanciadorMAX [Instanciador que creamos para instanciar los elementos 
 
 - pandas
 
+Para instalar la versión prerelease.
+https://test.pypi.org/project/quimpy/0.0.2/
+
+```python
+pip install -i https://test.pypi.org/simple/ quimpy==0.0.2
+```
+
 ---
 
 ## Estructura del paquete
