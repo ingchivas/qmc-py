@@ -762,7 +762,7 @@ Regresa:
 | ```pl{DO}({DP})```        | Obtiene el dato faltante en un problema de concentración peso-litro.        |
 | ```normal{DO}({DP})```    | Obtiene el dato faltante en un problema de concentración normal.            |
 | ```molaridad{DO}({DP})``` | Obtiene el dato faltante en un problema de concentración molaridad.         |
-| ```frac_molal(*c)```      | Obtiene el dato faltante en un problema de concentración fracción molal.    |
+| ```frac_molar(*c)```      | Obtiene el dato faltante en un problema de concentración fracción molal.    |
 | ```ppm{{DO}}```           | Obtiene el dato faltante en un problema de concentración partes por millón. |
 
 ### Unidades por defecto [Concentraciones]
