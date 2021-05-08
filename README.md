@@ -4,6 +4,18 @@
 
 ### Paquete misceláneo de química para Python3
 
+> Desarrollado por:
+>
+> Alberto L. Figueroa
+>
+> José Emilio Kuri
+>
+> Sebastiám Jácome
+>
+> Carlos A. Durán
+>
+> Universidad Panamericana CDMX
+
 ## Tabla de contenidos
 
 1. [Descripción](#descripción)
