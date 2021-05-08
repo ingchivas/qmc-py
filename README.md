@@ -852,7 +852,7 @@ Regresa:
 
 | Parámetros para {DO} en molaridad | Dato que obtiene    | Datos que necesita {DP}         |
 |------------------------------|---------------------|--------------------------------------|
-| ```molaridad_msoluto({DP})```    | Masa soluto    | ```m_molecular,v,molaridad,u_volumen```  |
+| ```molaridad_msoluto({DP})```    | Masa soluto    | ```m_molecular,v,molaridad,u_volumen``` |
 | ```molaridad_mmolecular({DP})``` | Masa molecular | ```m_soluto,v,molaridad, u_masa```   |
 | ```molaridad_volumenM({DP})```   | Volumen        | ```moles,molaridad``` |
 | ```molaridad_volumen({DP})```    | Volumen        | ```m_soluto,molaridad,m_molecular,u_masa``` |
@@ -861,11 +861,60 @@ Regresa:
 
 #### Concentración normal
 
-| Parámetros para {DO} en %vol | Dato que obtiene    | Datos que necesita {DP}              |
-|------------------------------|---------------------|--------------------------------------|
-| ```vol_vsolucion({DP})```    | Volumen solución    | ```v_soluto,v_solvente,u_volumen```  |
-| ```vol_vsolucionP({DP})```   | Volumen solución    | ```v_soluto,p_volumen,u_volumen```   |
-| ```vol_vsoluto({DP})```      | Volumen soluto      | ```v_solucion,p_volumen,u_volumen``` |
-| ```vol_vsolvente({DP})```    | Volumen solvente    | ```v_soluto,p_volumen,u_volumen```   |
-| ```vol_pvolumenS({DP})```    | %volumen            | ```v_solucion,v_soluto,u_volumen```  |
-| ```vol_pvolumen({DP})```     | %volumen            | ```v_soluto,v_solvente,u_volumen```  |
+| Parámetros para {DO} en normal | Dato que obtiene    | Datos que necesita {DP}              |
+|-------------------------------|---------------------|--------------------------------------|
+| ```normal_msolutoPEQ({DP})``` | Masa soluto    | ```peso_eq,v,normal,u_volumen```  |
+| ```normal_msoluto({DP})```    | Masa soluto    | ```m_molecular,carga,v,normal,u_volumen```  |
+| ```normal_peq({DP})```        | Peso equivalente | ```m_soluto,v,normal,u_masa, u_volumen``` |
+| ```normal_normalPEQ({DP})```  | Normal   | ```peso_eq,m_soluto,v,u_masa```   |
+| ```normal_normal({DP})```     | Normal            | ```m_molecular,m_soluto,carga,v, u_masa, u_volumen```|
+
+#### Concentración molal
+
+| Parámetros para {DO} en molal | Dato que obtiene  | Datos que necesita {DP}              |
+|-------------------------------|-------------------|--------------------------------------|
+| ```molal_msoluto({DP})```    | Masa soluto        | ```m_molecular,m_solvente,molal, u_masa```  |
+| ```molal_msolvente({DP})```  | Masa solvente (KG) | ```m_molecular,m_soluto,molal, u_masa```   |
+| ```molal_mmolecular({DP})``` | Masa molecular     | ```m_soluto,m_solvente,molal, u_masasoluto, u_masasolvente``` |
+| ```molal_molal({DP})```      | Conc. Gramo/Litro  | ```m_soluto,m_solvente,m_molecular, u_masasoluto,u_masasolvente``` |
+
+#### Concentración fracción molar
+
+Método ```frac_molal(*concentraciones)```:
+
+Los argumentos que toma son n número de concentraciones que se tienen, calcula la fracción en el orden de los argumentos.
+
+Regresa un diccionario.
+
+Ejemplo de uso:
+
+>Calcular la fracción molar de cada una de las sustancias de la disolución de:
+> 10 moles de metanol, 1 mol de etanol y 8 moles de agua.
+
+```python
+from libs import concentraciones
+concentraciones.frac_molar(10,1,8)
+
+```
+
+Regresa:
+
+```python
+{'C1': 0.526, 'C2': 0.053, 'C3': 0.421}
+
+```
+
+#### Concentración PPM (PartesXmillón)
+
+| Parámetros para {DO} en ppm | Dato que obtiene    | Datos que necesita {DP}              |
+|----------------------------|---------------------|--------------------------------------|
+| ```pl_msoluto({DP})```     | Masa soluto (mg)        | ```v,ppm,u_volumen```  |
+| ```pl_litros({DP})```      | Volumen     | ```m_soluto,ppm,u_masa```   |
+| ```pl_gl({DP})```          | ppm  | ```m_soluto,v,u_volumen,u_masa``` |
+
+#### Métodos encapsulados [Concentraciones]
+
+| Métodos                                            | Utilidad                      |
+|----------------------------------------------------|-------------------------------------|
+| ```_getpeq(m_molecular, carga)```  | Método encapsulado que regresa peso equivalente .          |
+| ```_convermasa(masa, u_masa = 'g', u_masaout = 'g')```           | Método encapsulado que calcula la conversión entre unidades de masa, regresa un float. Soprta las unidades de la tabla de unidades. |

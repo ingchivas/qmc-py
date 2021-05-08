@@ -219,7 +219,7 @@ def molal_molal(m_soluto, m_solvente, m_molecular, u_masasoluto = 'g', u_masasol
     molal = m_soluto/(m_molecular*m_solvente)
     return molal
 
-def frac_molal(*concentraciones):
+def frac_molar(*concentraciones):
     try:
         mol_total = sum(float(i) for i in concentraciones)
         res = {}
