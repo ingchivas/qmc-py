@@ -10,7 +10,7 @@
 >
 > José Emilio Kuri
 >
-> Sebastiám Jácome
+> Sebastián Jácome
 >
 > Carlos A. Durán
 >
