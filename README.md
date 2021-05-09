@@ -90,7 +90,7 @@ Llamamos al elemento por su símbolo.
 Ejemplo de uso:
 
 ```python
-from libs import elementos
+from quimpy import elementos
 elementos.He.nombre
 ```
 
@@ -102,7 +102,7 @@ La clase elementos tiene los siguientes métodos:
 Ejemplo:
 
 ```python
-from libs import elementos
+from quimpy import elementos
 elementos.He.imprimirElemento()
 ```
 
@@ -122,7 +122,7 @@ Neutrones: 2.0
 ```getElemento()``` - Regresa un diccionario conteniendo todos los atributos del elemento.
 
 ```python
-from libs import elementos
+from quimpy import elementos
 elementos.He.getElemento()
 ```
 
@@ -179,7 +179,7 @@ Este método igual puede devolver la UMA de solo un elemento: ```materia.umacomp
 Ejemplo:
 
 ```python
-from libs import materia
+from quimpy import materia
 
 materia.umacompuesto('H2 O')
 ```
@@ -208,7 +208,7 @@ Este método regresa la composición percentual de la UMA de un elemento o compu
 El parser es el mismo, y se debe escribir de la misma forma que el método ```umacompuesto()```.
 
 ```python
-from libs import materia
+from quimpy import materia
 
 materia.umapercentual('H2 O')
 ```
@@ -236,7 +236,7 @@ Regresa:
 Convierte gramos de un compuesto a moles. Utiliza el mismo parser y regresa un valor float.
 
 ```python
-from libs import materia
+from quimpy import materia
 
 materia.gmol(18.01528,'H2 O') 
 ```
@@ -313,7 +313,7 @@ NOTA: **Los resultados siempre se darán en las unidades por defecto**
 > Un gas ocupa 1.5 litros a una presión de 2.5 atm. Si la temperatura permanece constante, ¿Cuál es la presión en mm de Hg, si se pasa a un recipiente de 3 litros?
 
 ```python
-from libs import gases
+from quimpy import gases
 
 '''
  Como mi problema tiene los datos en sus unidades por defecto, no es necesario asignar esos argumentos.
@@ -335,7 +335,7 @@ Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades 
 > Calcular el volumen de un gas a una temperatura constante al recibir una presión de 5 atm, si su volumen es de 3.4 litros a una presión de 2.5 atmósferas.
 
 ```python
-from libs import gases
+from quimpy import gases
 
 '''
  Como mi problema tiene los datos en sus unidades por defecto, no es necesario asignar esos argumentos.
@@ -357,7 +357,7 @@ Recordemos que la unidad es **litro**, siempre se utilizarán las unidades conte
 > Una muestra de oxígeno ocupa 4.2 litros a 760 mmHg. ¿Cuál será el volumen del oxígeno a 415 mmHg, si la temperatura permanece constante?
 
 ```python
-from libs import gases
+from quimpy import gases
 
 '''
 Como mi problema tiene la unidad de presión en mmhg y esta unidad está soportada
@@ -390,7 +390,7 @@ Regresa:
 > La presión del aire en un matraz cerrado es de 460 mm de Hg a 45°C. ¿Cuál es la presión del gas si se calienta hasta 125°C y el volumen permanece constante.
 
 ```python
-from libs import gases
+from quimpy import gases
 
 gases.LussacP2(45, 125, 460, unidadespres = 'mmhg', unidadestemp = 'C')
 
@@ -409,7 +409,7 @@ Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades 
 > Cierto volumen de un gas se encuentra a una presión de 970 mmHg cuando su temperatura es de 25.0°C. ¿A qué temperatura deberá estar para que su presión sea 760 mmHg?
 
 ```python
-from libs import gases
+from quimpy import gases
 
 gases.LussacT2(25, 970, 760, unidadespres = 'mmhg', unidadestemp = 'C')
 
@@ -440,7 +440,7 @@ Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades cont
 > Se tiene un gas a una presión constante de 560 mm de Hg, el gas ocupa un volumen de 23 cm³ a una temperatura que está en 69°C . ¿Qué volumen ocupará el gas a una temperatura de 13°C?
 
 ```python
-from libs import gases
+from quimpy import gases
 
 gases.CharlesV2(69,13,23, unidadesvol = 'cm3', unidadestemp = 'C')
 
@@ -459,7 +459,7 @@ Recordemos que la unidad es **Litros**, siempre se utilizarán las unidades cont
 > Calcular la temperatura absoluta a la cual se encuentra un gas que ocupa un volumen de 0.4 litros a una presión de una atmósfera, si a una temperatura de 45°C ocupa un volumen de 1.2 litros a la misma presión.
 
 ```python
-from libs import gases
+from quimpy import gases
 
 gases.CharlesT1(45,0.4,1.2, unidadestemp = 'C')
 
@@ -478,7 +478,7 @@ Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades cont
 > Una masa determinada de nitrógeno gaseoso ocupa un volumen de 4 litros a una temperatura de 31°C y a una presión de una atmósfera, calcular su temperatura absoluta si el volumen que ocupa es de 1.2 litros a la misma presión
 
 ```python
-from libs import gases
+from quimpy import gases
 
 gases.CharlesT2(31,4,1.2, unidadestemp = 'C')
 
@@ -513,7 +513,7 @@ Recordemos que la unidad es **Kelvin**, siempre se utilizarán las unidades cont
 > ¿Cuál será la presión del neumático tras la marcha?
 
 ```python
-from libs import gases
+from quimpy import gases
 
 gases.LeyCombP2(20,50,50,50.5,1.8, unidadestemp = 'C')
 ```
@@ -532,7 +532,7 @@ Recordemos que la unidad es **atmósfera**, siempre se utilizarán las unidades 
 > a temperatura y y presión estándar (0°C - 760mmhg).
 
 ```python
-from libs import gases
+from quimpy import gases
 
 gases.LeyCombV2(27,0,105,985,760, unidadestemp = 'C', unidadespres = 'mmhg')
 ```
@@ -645,7 +645,7 @@ Por ejemplo, para la fórmula química del cloro sería ```_tipoPH(13, 1, 1e-13,
 Ejemplo:
 
 ```python
-from libs import ph
+from quimpy import ph
 
 _tipoPH(7, 7, 1e-7, 1e-7)
 ```
@@ -664,7 +664,7 @@ Por ejemplo, para la fórmula química del cloro sería ```_getConcentración(1e
 Ejemplo:
 
 ```python
-from libs import ph
+from quimpy import ph
 
 _getConcentración(1e-7, 1e-7)
 ```
@@ -683,7 +683,7 @@ Por ejemplo, para la fórmula química del cloro sería ```get_pH(13)```.
 Ejemplo:
 
 ```python
-from libs import ph
+from quimpy import ph
 
 get_pH(7)
 ```
@@ -702,7 +702,7 @@ Por ejemplo, para la fórmula química del cloro sería ```get_pOH(1)```.
 Ejemplo:
 
 ```python
-from libs import ph
+from quimpy import ph
 
 get_pOH(7)
 ```
@@ -721,7 +721,7 @@ Por ejemplo, para la fórmula química del cloro sería ```get_H(1e-13)```.
 Ejemplo:
 
 ```python
-from libs import ph
+from quimpy import ph
 
 get_H(1e-7)
 ```
@@ -740,7 +740,7 @@ Por ejemplo, para la fórmula química del cloro sería ```get_OH(1e-13)```.
 Ejemplo:
 
 ```python
-from libs import ph
+from quimpy import ph
 
 get_OH(1e-7)
 ```
@@ -799,7 +799,7 @@ Ejemplo para ```masa_msoluto(p_masa, m_solucion, u_masa = 'g')```
 > gramos contendrá una botella de refresco de coca- cola con 600 gramos de refresco.
 
 ```python
-from libs import concentraciones
+from quimpy import concentraciones
 
 concentraciones.masa_msoluto(11, 600)
 
@@ -819,7 +819,7 @@ Ejemplo para ```masa_pmasaS(m_soluto, m_solucion, u_masa = 'g')```
 > 225 gramos de disolución.
 
 ```python
-from libs import concentraciones
+from quimpy import concentraciones
 
 concentraciones.masa_pmasa(45,225)
 
@@ -838,7 +838,7 @@ Ejemplo para ```masa_pmasa(m_soluto, m_solvente, u_masa = 'g')```
 > ¿Cuál es el porcentaje en masa de la sal en la disolución?
 
 ```python
-from libs import concentraciones
+from quimpy import concentraciones
 
 concentraciones.masa_pmasa(1.8,50)
 
@@ -913,7 +913,7 @@ Ejemplo de uso:
 > 10 moles de metanol, 1 mol de etanol y 8 moles de agua.
 
 ```python
-from libs import concentraciones
+from quimpy import concentraciones
 concentraciones.frac_molar(10,1,8)
 
 ```
