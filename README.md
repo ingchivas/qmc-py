@@ -134,7 +134,7 @@ Además de un método adicional fuera de la clase:
 ```imprimirTabla()``` - Imprime la tabla periódica a la consola.
 
 ```python
-      -----                                                               -----
+          -----                                                               -----
         1 | H |                                                               |He |
         |---+----                                       --------------------+---|
         2 |Li |Be |                                       | B | C | N | O | F |Ne |
@@ -150,9 +150,9 @@ Además de un método adicional fuera de la clase:
         7 |Fr |Ra |ACT|
         -------------
                     -------------------------------------------------------------
-        Lanthanide |La |Ce |Pr |Nd |Pm |Sm |Eu |Gd |Tb |Dy |Ho |Er |Tm |Yb |Lu |
+        Lantánidos |La |Ce |Pr |Nd |Pm |Sm |Eu |Gd |Tb |Dy |Ho |Er |Tm |Yb |Lu |
                     |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|
-        Actinide   |Ac |Th |Pa | U |Np |Pu |Am |Cm |Bk |Cf |Es |Fm |Md |No |Lw |
+        Actínidos  |Ac |Th |Pa | U |Np |Pu |Am |Cm |Bk |Cf |Es |Fm |Md |No |Lw |
                     -------------------------------------------------------------
 ```
 
